@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketioService } from './socketio.service';
+import { NgModel } from '@angular/forms';
 //import { WebSocketService } from './web-socket.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { SocketioService } from './socketio.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
+  count: number = 0;
   title = 'socketio-angular';
   
   constructor(private socketService: SocketioService) {}
@@ -19,5 +20,21 @@ export class AppComponent implements OnInit {
 
   ngOnDestroy() {
     this.socketService.disconnect();
+  }
+
+  increment() {
+    this.socketService.emitTest(this.count++);
+    
+  }
+}
+
+export class Clicker {
+  number: number;
+  constructor () {
+    this.number= 0;
+  }
+
+  onClick() {
+    this.number++;
   }
 }
