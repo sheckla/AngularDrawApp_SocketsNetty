@@ -8,11 +8,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSliderModule } from '@angular/material/slider';
 import { SocketioService } from './socketio.service';
+import { ZeichenflaecheComponent } from './components/zeichenflaeche/zeichenflaeche.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ZeichenflaecheComponent,
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
