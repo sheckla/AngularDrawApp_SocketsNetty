@@ -11,6 +11,7 @@ import { SocketioService } from './socketio.service';
 import { ZeichenflaecheComponent } from './components/zeichenflaeche/zeichenflaeche.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { ZeichentoolsComponent } from './components/zeichentools/zeichentools.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HomeComponent } from './components/home/home.component';
     AppComponent,
     ZeichenflaecheComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    ZeichentoolsComponent
   ],
   imports: [
     BrowserModule,
