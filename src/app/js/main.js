@@ -24,7 +24,7 @@ $( document ).ready(function() {
         if(!isPainting) return;
         ctx.lineWidth = 10;
         ctx.lineCap = "round";
-        ctx.strokeStyle = "black";
+        ctx.strokeStyle = "red";
         ctx.lineTo(getMousePosX(e), getMousePosY(e));
         ctx.stroke();
         ctx.beginPath();
