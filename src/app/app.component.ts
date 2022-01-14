@@ -11,6 +11,7 @@ import { NgModel } from '@angular/forms';
 export class AppComponent implements OnInit {
   count: number = 0;
   title = 'socketio-angular';
+  userLoggedIn = true;
   
   constructor(private socketService: SocketioService) {}
   

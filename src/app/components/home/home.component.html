@@ -1,18 +1,18 @@
 <h1 class="text-center">Anmelden</h1>
 <div class="container pt-3 pb-3">
-  <form>
+  <form >
       <div class="mb-3 row d-flex justify-content-center ">
         <label for="emailInput" class="form-label text-center">E-Mail:</label>
-        <input type="email" class="form-control w-75" id="emailInput" aria-describedby="emailHelp" placeholder="max.mustermann@gmail.com">
+        <input type="email" class="form-control w-75" id="emailInput" aria-describedby="emailHelp" placeholder="max.mustermann@gmail.com" #email>
         <div id="emailHelp" class="form-text w-75">Wir geben deine E-mail nicht weiter.</div>
       </div>
-      
+
       <div class="mb-3 row d-flex justify-content-center text-center">
         <label for="passwordInput" class="form-label">Passwort:</label>
-        <input type="password" class="form-control w-75" id="passwordInput">
+        <input type="password" class="form-control w-75" id="passwordInput" #_passw>
       </div>
       <div class="text-center">
-          <button type="submit" class="btn btn-success">Anmelden</button>
+          <button type="submit" class="btn btn-success" (click)="clickme(email.value, _passw.value)">Anmelden</button>
       </div>
     </form>
 </div>
