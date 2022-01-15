@@ -1,10 +1,38 @@
 <div class="container pt-3 pb-3 ">
-  <div class="row w-100">
-      <div class="col">
-          <p>Draw-Width</p>
-          <mat-slider id="width-slider"  min="1" max="50" step="1" value="10"></mat-slider>
+  <div class="row w-100 align-items-center mx-auto">
+      <div class="col-2">
+        <!-- ELEMENT 1 -->
+        <div class="btn-group float-left " role="group" aria-label="Button group example">
+          <button type="button" id="draw-size-minus" class="btn btn-primary">-</button>
+          <button type="button" disabled class="btn btn-primary">DrawSize</button>
+          <button type="button" id="draw-size-plus" class="btn btn-primary">+</button>
+        </div>
+      </div>
+      <div class="col-2">
+        <!-- ELEMENT 2 -->
+        <div class="container hide-text">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button id="colorButton1" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:red">...</button>
+            <button id="colorButton2" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:blue">...</button>
+            <button id="colorButton3" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:green">...</button>
+            <button id="colorButton4" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color: yellow">...</button>
 
+          </div>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button id="colorButton5" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:black">...</button>
+            <button id="colorButton6" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:gray">...</button>
+            <button id="colorButton7" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:gainsboro">...</button>
+            <button id="colorButton8" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:white">...</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <span>Element 3</span>
+        <!-- ELEMENT 3 -->
+      </div>
+      <div class="col">
+        <span>Element 4</span>
+        <!-- ELEMENT 4 -->
       </div>
   </div>
 </div>
-
