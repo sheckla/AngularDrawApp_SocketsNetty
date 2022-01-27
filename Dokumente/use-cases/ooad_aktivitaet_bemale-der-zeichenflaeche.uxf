@@ -166,7 +166,7 @@ bg=green</panel_attributes>
       <w>240</w>
       <h>84</h>
     </coordinates>
-    <panel_attributes>Session ist vorhanden
+    <panel_attributes>Sessionüberprüfung
 bg=blue
 fg=white</panel_attributes>
     <additional_attributes/>
@@ -287,8 +287,8 @@ bg=red</panel_attributes>
       <w>240</w>
       <h>84</h>
     </coordinates>
-    <panel_attributes>Zeichentool wird
-geändert
+    <panel_attributes>Überprüfung der
+Zeichentooländerung
 bg=blue
 fg=white</panel_attributes>
     <additional_attributes/>
@@ -387,7 +387,8 @@ bg=gray</panel_attributes>
       <w>240</w>
       <h>84</h>
     </coordinates>
-    <panel_attributes>Zeichnen wird beendet
+    <panel_attributes>Überprüfung
+der Sessionschließung
 bg=blue
 fg=white</panel_attributes>
     <additional_attributes/>
@@ -431,13 +432,13 @@ r2=[wird beendet]</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>936</x>
-      <y>708</y>
+      <y>1296</y>
       <w>564</w>
-      <h>1896</h>
+      <h>1308</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r2=[wird nicht beendet]</panel_attributes>
-    <additional_attributes>90.0;10.0;450.0;10.0;450.0;1560.0;10.0;1560.0</additional_attributes>
+    <additional_attributes>90.0;10.0;450.0;10.0;450.0;1070.0;10.0;1070.0</additional_attributes>
   </element>
   <element>
     <id>UMLObject</id>
@@ -471,9 +472,8 @@ bg=yellow</panel_attributes>
       <w>240</w>
       <h>84</h>
     </coordinates>
-    <panel_attributes>Zeichenfläche wird 
-per Zeichentool
-bearbeitet
+    <panel_attributes>Bearbeitung der Zeichenfläche
+mit dem Zeichentool
 bg=blue
 fg=white</panel_attributes>
     <additional_attributes/>
