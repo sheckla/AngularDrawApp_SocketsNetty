@@ -1,0 +1,10 @@
+<form>
+    <div class="mb-3 row d-flex justify-content-center ">
+      <label for="boardcode" class="form-label text-center">Code:</label>
+      <input type="text" class="form-control w-75" id="boardcode" placeholder="12345" #code>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-success" (click)="submit(code.value)"> Anmelden</button>
+    </div>
+</form>

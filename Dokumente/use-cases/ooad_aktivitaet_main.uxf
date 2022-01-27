@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>13</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1573</x>
-      <y>182</y>
-      <w>26</w>
-      <h>26</h>
+      <x>1098</x>
+      <y>126</y>
+      <w>18</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>type=initial</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1456</x>
-      <y>273</y>
-      <w>260</w>
-      <h>91</h>
+      <x>1017</x>
+      <y>189</y>
+      <w>180</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Besuchen der 
 Webanwendung
@@ -29,10 +29,10 @@ fg=white</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>195</y>
-      <w>39</w>
-      <h>104</h>
+      <x>1098</x>
+      <y>135</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -40,10 +40,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1833</x>
-      <y>429</y>
-      <w>182</w>
-      <h>91</h>
+      <x>1278</x>
+      <y>297</y>
+      <w>126</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>*Nutzung*
 Benutzer (Host)
@@ -53,10 +53,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1703</x>
-      <y>299</y>
-      <w>156</w>
-      <h>156</h>
+      <x>1188</x>
+      <y>207</y>
+      <w>108</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;100.0;100.0</additional_attributes>
@@ -64,10 +64,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1456</x>
-      <y>429</y>
-      <w>260</w>
-      <h>91</h>
+      <x>1017</x>
+      <y>297</y>
+      <w>180</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Anzeige der 
 Interaktionsmöglichkeiten
@@ -78,10 +78,10 @@ fg=white</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>351</y>
-      <w>39</w>
-      <h>104</h>
+      <x>1098</x>
+      <y>243</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -89,10 +89,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1170</x>
-      <y>351</y>
-      <w>182</w>
-      <h>91</h>
+      <x>819</x>
+      <y>243</y>
+      <w>126</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>*Verantwortlich*
 Webanwendung
@@ -102,10 +102,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1352</x>
+      <x>945</x>
       <y>0</y>
-      <w>455</w>
-      <h>78</h>
+      <w>315</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>Das Symbol X weißt auf Prozessverfeinerungen hin
 und wird in einem seperaten Prozess fortgeführt.
@@ -116,10 +116,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1326</x>
+      <x>927</x>
       <y>0</y>
-      <w>26</w>
-      <h>26</h>
+      <w>18</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>type=termination</panel_attributes>
     <additional_attributes/>
@@ -127,10 +127,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1339</x>
-      <y>299</y>
-      <w>143</w>
-      <h>78</h>
+      <x>936</x>
+      <y>207</y>
+      <w>99</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;40.0</additional_attributes>
@@ -138,10 +138,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1339</x>
-      <y>429</y>
-      <w>143</w>
-      <h>65</h>
+      <x>936</x>
+      <y>297</y>
+      <w>99</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>90.0;30.0;10.0;10.0</additional_attributes>
@@ -149,10 +149,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1560</x>
-      <y>741</y>
-      <w>52</w>
-      <h>52</h>
+      <x>1089</x>
+      <y>513</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>type=decision
 bg=red</panel_attributes>
@@ -161,10 +161,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>507</y>
-      <w>39</w>
-      <h>104</h>
+      <x>1098</x>
+      <y>351</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -172,10 +172,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1482</x>
-      <y>780</y>
-      <w>286</w>
-      <h>117</h>
+      <x>1035</x>
+      <y>540</y>
+      <w>198</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r2=[Session-Beitreten ausgewählt]
@@ -185,10 +185,10 @@ r2pos=-75,-5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>884</x>
-      <y>754</y>
-      <w>702</w>
-      <h>143</h>
+      <x>621</x>
+      <y>522</y>
+      <w>486</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=[Anmeldesystem ausgewählt]
@@ -198,10 +198,10 @@ r1pos=-90,10</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>871</x>
-      <y>871</y>
-      <w>260</w>
-      <h>91</h>
+      <x>612</x>
+      <y>603</y>
+      <w>180</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Anmeldung des 
 Benutzers
@@ -212,10 +212,10 @@ fg=white</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>26</x>
-      <y>754</y>
-      <w>1131</w>
-      <h>1040</h>
+      <x>27</x>
+      <y>522</y>
+      <w>783</w>
+      <h>720</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=[Verlassen der Website]
@@ -225,10 +225,10 @@ r1pos=-80,0</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>0</x>
-      <y>1768</y>
-      <w>260</w>
-      <h>91</h>
+      <x>9</x>
+      <y>1224</y>
+      <w>180</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Beenden der Webanwendung
 bg=blue
@@ -238,10 +238,10 @@ fg=white</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>117</x>
-      <y>1846</y>
-      <w>39</w>
-      <h>104</h>
+      <x>90</x>
+      <y>1278</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -249,10 +249,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>117</x>
-      <y>1924</y>
-      <w>26</w>
-      <h>26</h>
+      <x>90</x>
+      <y>1332</y>
+      <w>18</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>type=final</panel_attributes>
     <additional_attributes/>
@@ -260,10 +260,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1456</x>
-      <y>585</y>
-      <w>260</w>
-      <h>91</h>
+      <x>1017</x>
+      <y>405</y>
+      <w>180</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Interaktionsmöglichkeit 
 auswählen
@@ -274,10 +274,10 @@ fg=white</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>663</y>
-      <w>39</w>
-      <h>104</h>
+      <x>1098</x>
+      <y>459</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -285,10 +285,10 @@ fg=white</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1703</x>
-      <y>507</y>
-      <w>156</w>
-      <h>143</h>
+      <x>1188</x>
+      <y>351</y>
+      <w>108</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;90.0;100.0;10.0</additional_attributes>
@@ -296,10 +296,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1092</x>
-      <y>884</y>
-      <w>26</w>
-      <h>26</h>
+      <x>765</x>
+      <y>612</y>
+      <w>18</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>type=termination
 </panel_attributes>
@@ -308,10 +308,10 @@ fg=white</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>624</y>
-      <w>858</w>
-      <h>1027</h>
+      <x>1098</x>
+      <y>432</y>
+      <w>594</w>
+      <h>711</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>110.0;10.0;640.0;10.0;640.0;770.0;10.0;770.0;10.0;720.0</additional_attributes>
@@ -319,10 +319,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1560</x>
-      <y>1508</y>
-      <w>52</w>
-      <h>52</h>
+      <x>1089</x>
+      <y>1044</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>type=decision
 bg=red</panel_attributes>
@@ -331,23 +331,23 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1209</x>
-      <y>754</y>
-      <w>377</w>
-      <h>299</h>
+      <x>846</x>
+      <y>522</y>
+      <w>261</w>
+      <h>225</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r2=[Zeichenfläche ausgewählt]
 r2pos=-80,65</panel_attributes>
-    <additional_attributes>100.0;210.0;100.0;10.0;270.0;10.0</additional_attributes>
+    <additional_attributes>100.0;230.0;100.0;10.0;270.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>533</x>
-      <y>1014</y>
-      <w>260</w>
-      <h>91</h>
+      <x>486</x>
+      <y>720</y>
+      <w>180</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Starten einer 
 Zeichen-Session
@@ -358,10 +358,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>754</x>
-      <y>1027</y>
-      <w>26</w>
-      <h>26</h>
+      <x>639</x>
+      <y>720</y>
+      <w>18</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>type=termination
 </panel_attributes>
@@ -370,10 +370,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1209</x>
-      <y>1170</y>
-      <w>260</w>
-      <h>91</h>
+      <x>846</x>
+      <y>810</y>
+      <w>180</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Bemalen der 
 Zeichenfläche
@@ -384,10 +384,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1430</x>
-      <y>1183</y>
-      <w>26</w>
-      <h>26</h>
+      <x>999</x>
+      <y>819</y>
+      <w>18</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>type=termination
 </panel_attributes>
@@ -396,10 +396,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1456</x>
-      <y>871</y>
-      <w>260</w>
-      <h>91</h>
+      <x>1017</x>
+      <y>603</y>
+      <w>180</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Beitreten einer 
 Zeichnen-Session
@@ -410,10 +410,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1313</x>
-      <y>1027</y>
-      <w>52</w>
-      <h>52</h>
+      <x>918</x>
+      <y>729</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>type=decision
 bg=red</panel_attributes>
@@ -422,21 +422,21 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1326</x>
-      <y>1066</y>
-      <w>39</w>
-      <h>130</h>
+      <x>927</x>
+      <y>756</y>
+      <w>27</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1677</x>
-      <y>884</y>
-      <w>26</w>
-      <h>26</h>
+      <x>1170</x>
+      <y>612</y>
+      <w>18</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>type=termination
 </panel_attributes>
@@ -445,10 +445,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1326</x>
-      <y>1248</y>
-      <w>260</w>
-      <h>312</h>
+      <x>927</x>
+      <y>864</y>
+      <w>180</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>180.0;220.0;10.0;220.0;10.0;10.0</additional_attributes>
@@ -456,10 +456,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1313</x>
-      <y>1651</y>
-      <w>598</w>
-      <h>39</h>
+      <x>918</x>
+      <y>1143</y>
+      <w>414</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>(Verzweigung, da Features in Zukunft noch ausgebaut werden könnten)
 bg=red</panel_attributes>
@@ -468,10 +468,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1560</x>
-      <y>1027</y>
-      <w>52</w>
-      <h>52</h>
+      <x>1089</x>
+      <y>729</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>type=decision
 bg=red</panel_attributes>
@@ -480,22 +480,22 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>1066</y>
-      <w>169</w>
-      <h>468</h>
+      <x>1098</x>
+      <y>756</y>
+      <w>117</w>
+      <h>306</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r2=[fehlgeschlagen]</panel_attributes>
-    <additional_attributes>10.0;340.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;320.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1352</x>
-      <y>1027</y>
-      <w>234</w>
-      <h>52</h>
+      <x>945</x>
+      <y>729</y>
+      <w>162</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r2=[erfolgreich]</panel_attributes>
@@ -504,21 +504,21 @@ r2=[erfolgreich]</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>949</y>
-      <w>39</w>
-      <h>104</h>
+      <x>1098</x>
+      <y>657</y>
+      <w>27</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1807</x>
-      <y>819</y>
-      <w>182</w>
-      <h>91</h>
+      <x>1260</x>
+      <y>567</y>
+      <w>126</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>*Nutzung*
 Weitere Benutzer
@@ -528,10 +528,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1703</x>
-      <y>845</y>
-      <w>130</w>
-      <h>91</h>
+      <x>1188</x>
+      <y>585</y>
+      <w>90</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;50.0;80.0;10.0</additional_attributes>
@@ -539,10 +539,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1807</x>
-      <y>923</y>
-      <w>182</w>
-      <h>91</h>
+      <x>1260</x>
+      <y>639</y>
+      <w>126</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>*Verantwortlich*
 Benutzer (Host)
@@ -552,10 +552,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1703</x>
-      <y>910</y>
-      <w>130</w>
-      <h>78</h>
+      <x>1188</x>
+      <y>630</y>
+      <w>90</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;80.0;40.0</additional_attributes>
@@ -563,10 +563,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>572</x>
-      <y>1170</y>
-      <w>182</w>
-      <h>91</h>
+      <x>522</x>
+      <y>819</y>
+      <w>126</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>*Nutzung*
 Benutzer (Host)
@@ -576,43 +576,43 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
-      <y>1092</y>
-      <w>39</w>
-      <h>104</h>
+      <x>567</x>
+      <y>693</y>
+      <w>27</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>741</x>
-      <y>1196</y>
-      <w>494</w>
-      <h>39</h>
+      <x>639</x>
+      <y>837</y>
+      <w>225</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>360.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>230.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>247</x>
-      <y>1248</y>
-      <w>442</w>
-      <h>585</h>
+      <x>180</x>
+      <y>873</y>
+      <w>414</w>
+      <h>396</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;430.0;320.0;10.0</additional_attributes>
+    <additional_attributes>10.0;420.0;440.0;420.0;440.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1131</x>
-      <y>871</y>
-      <w>39</w>
-      <h>39</h>
+      <x>792</x>
+      <y>603</y>
+      <w>27</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>S1
 bg=green</panel_attributes>
@@ -621,10 +621,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1170</x>
-      <y>871</y>
-      <w>39</w>
-      <h>39</h>
+      <x>819</x>
+      <y>603</y>
+      <w>27</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>S7
 bg=green</panel_attributes>
@@ -633,10 +633,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>494</x>
-      <y>1014</y>
-      <w>39</w>
-      <h>39</h>
+      <x>459</x>
+      <y>729</y>
+      <w>27</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>S4
 bg=green</panel_attributes>
@@ -645,21 +645,21 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>988</x>
-      <y>949</y>
-      <w>351</w>
-      <h>130</h>
+      <x>585</x>
+      <y>657</y>
+      <w>135</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>250.0;80.0;10.0;80.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;30.0;130.0;30.0;130.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>273</x>
-      <y>754</y>
-      <w>1313</w>
-      <h>143</h>
+      <x>198</x>
+      <y>522</y>
+      <w>909</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=[Zeichen-Session starten ausgewählt]
@@ -669,10 +669,10 @@ r1pos=-120,10</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>299</x>
-      <y>871</y>
-      <w>260</w>
-      <h>91</h>
+      <x>216</x>
+      <y>603</y>
+      <w>180</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Nutzer ist 
 angemeldet
@@ -683,10 +683,10 @@ fg=white</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>637</x>
-      <y>884</y>
-      <w>52</w>
-      <h>52</h>
+      <x>450</x>
+      <y>612</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>type=decision
 bg=red</panel_attributes>
@@ -695,10 +695,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>897</y>
-      <w>117</w>
-      <h>39</h>
+      <x>387</x>
+      <y>621</y>
+      <w>81</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
@@ -706,22 +706,22 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
-      <y>923</y>
-      <w>143</w>
-      <h>117</h>
+      <x>459</x>
+      <y>639</y>
+      <w>117</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 [angemeldet]</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>110.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>676</x>
-      <y>884</y>
-      <w>221</w>
-      <h>52</h>
+      <x>477</x>
+      <y>612</y>
+      <w>153</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 [nicht angemeldet]</panel_attributes>
@@ -730,21 +730,21 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>780</x>
-      <y>1040</y>
-      <w>559</w>
-      <h>39</h>
+      <x>657</x>
+      <y>738</y>
+      <w>279</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>410.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>290.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>2054</x>
-      <y>884</y>
-      <w>260</w>
-      <h>91</h>
+      <x>1431</x>
+      <y>612</y>
+      <w>180</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Interaktion
 bg=blue
@@ -754,10 +754,10 @@ fg=white</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1599</x>
-      <y>754</y>
-      <w>728</w>
-      <h>156</h>
+      <x>1116</x>
+      <y>522</y>
+      <w>504</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=[*beliebig andere Interaktion*]
@@ -767,10 +767,10 @@ r1pos=-90,10</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1599</x>
-      <y>962</y>
-      <w>611</w>
-      <h>598</h>
+      <x>1116</x>
+      <y>666</y>
+      <w>423</w>
+      <h>414</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;440.0;450.0;440.0;450.0;10.0</additional_attributes>
@@ -778,10 +778,10 @@ r1pos=-90,10</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1417</x>
-      <y>871</y>
-      <w>39</w>
-      <h>39</h>
+      <x>990</x>
+      <y>603</y>
+      <w>27</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>S5
 bg=green</panel_attributes>
@@ -790,10 +790,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1352</x>
-      <y>91</y>
-      <w>455</w>
-      <h>78</h>
+      <x>945</x>
+      <y>63</y>
+      <w>315</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>Grüne Blöcke weisen auf die Use-Case Referenz hin
 Bsp.: System Use-Case 42 = S42
@@ -803,10 +803,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1313</x>
-      <y>91</y>
-      <w>39</w>
-      <h>39</h>
+      <x>918</x>
+      <y>63</y>
+      <w>27</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>S42
 bg=green</panel_attributes>
@@ -815,10 +815,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1469</x>
-      <y>1170</y>
-      <w>39</w>
-      <h>39</h>
+      <x>1026</x>
+      <y>810</y>
+      <w>27</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>S2	
 bg=green</panel_attributes>
@@ -827,10 +827,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1508</x>
-      <y>1170</y>
-      <w>39</w>
-      <h>39</h>
+      <x>1053</x>
+      <y>810</y>
+      <w>27</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>S3
 bg=green</panel_attributes>
@@ -839,13 +839,36 @@ bg=green</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>1469</x>
-      <y>1209</y>
-      <w>39</w>
-      <h>39</h>
+      <x>1026</x>
+      <y>837</y>
+      <w>27</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>S6
 bg=green</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>558</x>
+      <y>666</y>
+      <w>36</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>type=decision
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>567</x>
+      <y>774</y>
+      <w>27</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
 </diagram>

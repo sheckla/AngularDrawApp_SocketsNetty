@@ -12,6 +12,7 @@ import { ZeichenflaecheComponent } from './components/zeichenflaeche/zeichenflae
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ZeichentoolsComponent } from './components/zeichentools/zeichentools.component';
+import { JoinboardComponent } from './components/joinboard/joinboard.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ZeichentoolsComponent } from './components/zeichentools/zeichentools.co
     ZeichenflaecheComponent,
     NavbarComponent,
     HomeComponent,
-    ZeichentoolsComponent
+    ZeichentoolsComponent,
+    JoinboardComponent
   ],
   imports: [
     BrowserModule,

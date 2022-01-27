@@ -23,6 +23,17 @@ $( document ).ready(function() {
     ctx.beginPath();
   }
 
+    function draw(e) {
+        if(!isPainting) return;
+        ctx.lineWidth = 10;
+        ctx.lineCap = "round";
+        ctx.strokeStyle = "red";
+        ctx.lineTo(getMousePosX(e), getMousePosY(e));
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(getMousePosX(e), getMousePosY(e));
+    }
+
   function changeLineWidth(lineWidth) {
     ctx.lineWidth = lineWidth;
   }
@@ -72,6 +83,7 @@ $( document ).ready(function() {
     var rect = canvas.getBoundingClientRect();
     return e.clientY - rect.top
   }
+
 
   window.addEventListener("resize", resizeCanvas, false);
 

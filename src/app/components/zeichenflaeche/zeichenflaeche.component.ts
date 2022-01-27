@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./zeichenflaeche.component.css']
 })
 
-/* 
- * Author: Kern Handa
- * https://kernhanda.github.io/tutorial-typescript-canvas-drawing/ 
- * */
+
 export class ZeichenflaecheComponent implements OnInit {
 
  ngOnInit(): void {
