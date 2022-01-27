@@ -3,7 +3,7 @@
   <hr />
   <div class="row align-items-center">
     <div class="col">
-      <app-home *ngIf="!userLoggedIn; else elseBlock"></app-home>
+      <app-home *ngIf="userLoggedIn; else elseBlock"></app-home>
     </div>
     <ng-template #elseBlock>
       <app-joinboard></app-joinboard>
