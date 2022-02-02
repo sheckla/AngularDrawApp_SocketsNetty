@@ -13,6 +13,26 @@ $( document ).ready(function() {
   var points = [];
   var redoStack = [];
 
+  canvas.addEventListener('mousedown', startpainting);
+  canvas.addEventListener('mouseup', stopPainting);
+  canvas.addEventListener('mousemove', draw);
+
+  document.getElementById("clear").onclick = function() {clearAll()};
+  document.getElementById("draw-size-plus").onclick = function() {increaseDrawSize()};
+  document.getElementById("draw-size-minus").onclick = function() {decreaseDrawSize()};
+  document.getElementById("undo").onclick = function() {undo()};
+  document.getElementById("redo").onclick = function() {redo()};
+  document.getElementById("resetDrawSizeButton").onclick = function() {resetDrawSize()};
+
+  document.getElementById("colorButton1").onclick = function() {changeColor(0)};
+  document.getElementById("colorButton2").onclick = function() {changeColor(1)};
+  document.getElementById("colorButton3").onclick = function() {changeColor(2)};
+  document.getElementById("colorButton4").onclick = function() {changeColor(3)};
+  document.getElementById("colorButton5").onclick = function() {changeColor(4)};
+  document.getElementById("colorButton6").onclick = function() {changeColor(5)};
+  document.getElementById("colorButton7").onclick = function() {changeColor(6)};
+  document.getElementById("colorButton8").onclick = function() {changeColor(7)};
+
   function startpainting(e) {
     isPainting = true;
     draw(e);
@@ -35,6 +55,7 @@ $( document ).ready(function() {
     ctx.lineTo(getMousePosX(e), getMousePosY(e));
     ctx.stroke();
     ctx.beginPath();
+
     points.push({
       x: getMousePosX(e),
       y: getMousePosY(e),
@@ -42,27 +63,10 @@ $( document ).ready(function() {
       color: "" + color,
       mode: "draw"
     });
+
     ctx.moveTo(getMousePosX(e), getMousePosY(e));
+    ctx.closePath();
   }
-
-  canvas.addEventListener('mousedown', startpainting);
-  canvas.addEventListener('mouseup', stopPainting);
-  canvas.addEventListener('mousemove', draw);
-
-  document.getElementById("clear").onclick = function() {clearAll()};
-  document.getElementById("draw-size-plus").onclick = function() {increaseDrawSize()};
-  document.getElementById("draw-size-minus").onclick = function() {decreaseDrawSize()};
-  document.getElementById("undo").onclick = function() {undo()};
-  document.getElementById("redo").onclick = function() {redo()};
-
-  document.getElementById("colorButton1").onclick = function() {changeColor(0)};
-  document.getElementById("colorButton2").onclick = function() {changeColor(1)};
-  document.getElementById("colorButton3").onclick = function() {changeColor(2)};
-  document.getElementById("colorButton4").onclick = function() {changeColor(3)};
-  document.getElementById("colorButton5").onclick = function() {changeColor(4)};
-  document.getElementById("colorButton6").onclick = function() {changeColor(5)};
-  document.getElementById("colorButton7").onclick = function() {changeColor(6)};
-  document.getElementById("colorButton8").onclick = function() {changeColor(7)};
 
   function getMousePosX(e) {
     var rect = canvas.getBoundingClientRect();
@@ -82,6 +86,11 @@ $( document ).ready(function() {
 
   function clearAll() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    points = [];
+  }
+
+  function resetDrawSize() {
+    drawSize = 10;
   }
 
   function increaseDrawSize() {
@@ -108,7 +117,7 @@ $( document ).ready(function() {
 
   function redo() {
     ctx.save();
-      points.push(redoStack.pop());
+    points.push(redoStack.pop());
     redrawAll();
   }
 
@@ -118,7 +127,6 @@ $( document ).ready(function() {
   }
 
   function redrawAll() {
-
     if (points.length == 0) {
       return;
     }
@@ -127,6 +135,7 @@ $( document ).ready(function() {
     for (var i = 0; i < points.length-1; i++) {
       var pt = points[i];
       var pt2 = points[i+1];
+      ctx.strokeStyle = points[i].color;
       ctx.beginPath();
       ctx.moveTo(pt.x, pt.y);
       ctx.lineTo(pt2.x, pt2.y);
