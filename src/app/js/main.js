@@ -30,7 +30,7 @@ $( document ).ready(function() {
   document.getElementById("saveImageButton").onclick = function() {saveImage()};
 
   // Color Buttons
-  // Upper
+  // Upper Row
   document.getElementById("colorButton1").onclick = function() {changeColor(0)};
   document.getElementById("colorButton2").onclick = function() {changeColor(1)};
   document.getElementById("colorButton3").onclick = function() {changeColor(2)};
@@ -44,7 +44,7 @@ $( document ).ready(function() {
   document.getElementById("colorButton11").onclick = function() {changeColor(10)};
   document.getElementById("colorButton12").onclick = function() {changeColor(11)};
 
-  // Lower
+  // Lower Row
   document.getElementById("colorButton101").onclick = function() {changeColor(12)};
   document.getElementById("colorButton102").onclick = function() {changeColor(13)};
   document.getElementById("colorButton103").onclick = function() {changeColor(14)};
@@ -97,6 +97,7 @@ $( document ).ready(function() {
     var rect = canvas.getBoundingClientRect();
     return e.clientY - rect.top
   }
+
 
   // TODO kann geloescht werden?
   function resizeCanvas(e) {
