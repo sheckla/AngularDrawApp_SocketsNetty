@@ -1,38 +1,46 @@
 <div class="container pt-3 pb-3 ">
-  <div class="row w-100 align-items-center mx-auto">
+  <div class="row w-100 align-items-center">
       <div class="col-2">
         <!-- ELEMENT 1 -->
-        <div class="btn-group float-left " role="group" aria-label="Button group example">
-          <button type="button" id="draw-size-minus" class="btn btn-primary">-</button>
-          <button type="button" id="resetDrawSizeButton" class="btn btn-primary">Reset Draw Size</button> <!-- disabled um den Button auszugrauen-->
-          <button type="button" id="draw-size-plus" class="btn btn-primary">+</button>
+        <div class="btn-group" role="group" aria-label="Button group example">
+          <button type="button" id="drawSizeMinusButton" class="btn btn-primary btn-sm">-</button>
+          <button type="button" id="resetDrawSizeButton" class="btn btn-primary">Draw Size: 10 (Click to reset)</button> <!-- disabled um den Button auszugrauen-->
+          <button type="button" id="drawSizePlusButton" class="btn btn-primary">+</button>
         </div>
       </div>
-      <div class="col-2">
+      <div class="col-2 text-right">
         <!-- ELEMENT 2 -->
         <div class="container hide-text">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button id="colorButton1" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:red">...</button>
-            <button id="colorButton2" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:blue">...</button>
-            <button id="colorButton3" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:green">...</button>
-            <button id="colorButton4" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color: yellow">...</button>
+          <div class="btn-group btn-group-large" role="group" aria-label="Basic example">
+            <button id="colorButton1" type="button" class="btn btn-secondary rounded-0 color-button btn-group-large" style="background-color:rgb(194, 78, 78)">...</button>
+            <button id="colorButton2" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(255, 211, 116)">...</button>
+            <button id="colorButton3" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(161, 187, 69)">...</button>
+            <button id="colorButton4" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color: rgb(77, 184, 73)">...</button>
+            <button id="colorButton5" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color: rgb(80, 180, 133)">...</button>
+            <button id="colorButton6" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color: rgb(72, 190, 236)">...</button>
+            <button id="colorButton7" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color: rgb(72, 101, 228)">...</button>
+            <button id="colorButton8" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color: rgb(137, 67, 230)">...</button>
+            <button id="colorButton9" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color: rgb(133, 40, 196)">...</button>
+            <button id="colorButton10" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color: rgb(233, 54, 203)">...</button>
+            <button id="colorButton11" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color: rgb(240, 32, 136)">...</button>
+            <button id="colorButton12" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color: rgb(133, 1, 23)">...</button>
 
           </div>
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button id="colorButton5" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:black">...</button>
-            <button id="colorButton6" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:gray">...</button>
-            <button id="colorButton7" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:gainsboro">...</button>
-            <button id="colorButton8" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:white">...</button>
+            <button id="colorButton101" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:black">...</button>
+            <button id="colorButton102" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(70, 70, 70)">...</button>
+            <button id="colorButton103" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(107, 107, 107)">...</button>
+            <button id="colorButton104" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(192, 192, 192)">...</button>
+            <button id="colorButton105" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:white">...</button>
+            <button id="colorButton106" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(58, 0, 0)">...</button>
+            <button id="colorButton107" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(62, 77, 0)">...</button>
+            <button id="colorButton108" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(6, 70, 0)">...</button>
+            <button id="colorButton109" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(0, 46, 73)">...</button>
+            <button id="colorButton110" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(45, 0, 63)">...</button>
+            <button id="colorButton111" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(63, 0, 42)">...</button>
+            <button id="colorButton112" type="button" class="btn btn-secondary rounded-0 color-button" style="background-color:rgb(54, 0, 0)">...</button>
           </div>
         </div>
-      </div>
-      <div class="col">
-        <span>Element 3</span>
-        <!-- ELEMENT 3 -->
-      </div>
-      <div class="col">
-        <span>Element 4</span>
-        <!-- ELEMENT 4 -->
       </div>
   </div>
 </div>
