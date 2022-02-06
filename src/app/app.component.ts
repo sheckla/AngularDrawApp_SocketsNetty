@@ -7,7 +7,7 @@ import * as socketio from '../../assets/js/socketio.js';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
+
   title = 'socketio-angular';
   userLoggedIn = true;
 
@@ -16,4 +16,5 @@ export class AppComponent implements OnInit {
     socket.emit("test", "daniel 123");
   }
 
+  
 }
