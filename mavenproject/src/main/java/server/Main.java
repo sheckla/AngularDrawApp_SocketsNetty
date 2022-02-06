@@ -9,52 +9,61 @@ import com.corundumstudio.socketio.listener.DataListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
 
 public class Main {
-	
-	private static Configuration config = new Configuration();
-    private static SocketIOServer server;
-    
-    private Main() {}
-    
-	public static void main(String[] args) {
-		config.setHostname("localhost");
-    	config.setPort(9092);
-    	server = new SocketIOServer(config);
-    	
-    	server.addConnectListener(new ConnectListener() {
-			
-			@Override
-			public void onConnect(SocketIOClient client) {
-				System.out.println("ClientID: " + client.getSessionId() + " is connected!");
-			}
-		});
-		
-		server.addDisconnectListener(new DisconnectListener() {
-			
-			@Override
-			public void onDisconnect(SocketIOClient client) {
-				System.out.println("ClientID: " + client.getSessionId() + " is disconnected!");
-			}
-		});
-		
-		server.addEventListener("test", String.class, new DataListener<String>() {
 
-			@Override
-			public void onData(SocketIOClient client, String data, AckRequest ackSender) throws Exception {
-				System.out.println("Data: " + data);
-			}
-			
-		});
-		
-		server.start();
+  private static Configuration config = new Configuration();
+  private static SocketIOServer server;
 
-        try {
-			Thread.sleep(Integer.MAX_VALUE);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+  private Main() {}
 
-        server.stop();
-	}
+  public static void main(String[] args) {
+    config.setHostname("localhost");
+    config.setPort(9092);
+    server = new SocketIOServer(config);
+
+    server.addConnectListener(new ConnectListener() {
+
+      @Override
+      public void onConnect(SocketIOClient client) {
+        System.out.println("ClientID: " + client.getSessionId() + " is connected!");
+      }
+    });
+
+    server.addDisconnectListener(new DisconnectListener() {
+
+      @Override
+      public void onDisconnect(SocketIOClient client) {
+        System.out.println("ClientID: " + client.getSessionId() + " is disconnected!");
+      }
+    });
+
+    server.addEventListener("test", String.class, new DataListener<String>() {
+
+      @Override
+      public void onData(SocketIOClient client, String data, AckRequest ackSender) throws Exception {
+        System.out.println("Data: " + data);
+      }
+
+    });
+
+    server.addEventListener("notifyClients", String.class, new DataListener<String>() {
+
+      @Override
+      public void onData(SocketIOClient client, String data, AckRequest ackSender) throws Exception {
+        server.getBroadcastOperations().sendEvent("notifyClients", client.getSessionId());
+      }
+
+    });
+
+    server.start();
+
+    try {
+      Thread.sleep(Integer.MAX_VALUE);
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    server.stop();
+  }
 
 }

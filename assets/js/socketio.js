@@ -1,11 +1,22 @@
 export function connect() {
-    var socket =  io('http://localhost:9092',{
-        transports: ['websocket'], 
-        upgrade: false
-    }); 
+  var eventCount = 1;
+  var socket =  io('http://localhost:9092',{
+  transports: ['websocket'],
+  upgrade: false
+});
 
-    socket.on("connect", () => {  console.log(socket.id)}); // x8WIv7-mJelg7on_ALbx});
-    socket.emit("test", "alex 123");
+socket.on("connect", () => {
+  console.log("(this client) socketio.js - client connected successfully @" + socket.id);
+  socket.emit("notifyClients", "")
+});
 
-    return socket;
+socket.on("notifyClients", (data) => {
+  if (socket.id != data) {
+    console.log("(different Client) notifyClients from: @" + data + " eventCount:" + eventCount++);
+  }
+});
+
+//socket.emit("test", "from socketio.js");
+
+return socket;
 }

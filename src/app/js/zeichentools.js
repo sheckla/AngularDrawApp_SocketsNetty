@@ -1,5 +1,6 @@
-$.getscript("./src/app/js/main.js",function(){
-  clearAll();
-  });
-
-document.getElementById("zeichentoolsTest").onclick = function() {clearAll()};
+var i = 0;
+export function tools(value) {
+  console.log("value" + value);
+  console.log("zeichentools.js::tools()" + i++);
+  resetPaths();
+}

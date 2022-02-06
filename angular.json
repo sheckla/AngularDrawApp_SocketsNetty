@@ -31,7 +31,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "./src/app/js/main.js"
+              "./src/app/js/main.js",
+              "./src/app/js/zeichentools.js"
             ]
           },
           "configurations": {

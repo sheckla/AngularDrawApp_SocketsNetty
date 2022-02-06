@@ -1,4 +1,10 @@
 $( document ).ready(function() {
+  canvasEngine();
+});
+
+var paths = [];
+
+function canvasEngine() {
   var canvas = document.getElementById("zeichenflaeche");
   var ctx = canvas.getContext("2d");
   canvas.width = document.getElementById("zeichenflaeche").parentNode.parentElement.clientWidth;
@@ -10,7 +16,7 @@ $( document ).ready(function() {
   var drawSizeIncrement = 3;
   var color = "black";
 
-  var paths = [];
+  paths = [];
   var RedoPathsStack = [];
 
   canvas.addEventListener('mousedown', startpainting);
@@ -149,7 +155,7 @@ $( document ).ready(function() {
   function redo() {
     if (RedoPathsStack.length > 0) {
       paths.push(RedoPathsStack.pop());
-      redrawAll();
+      redrawAll(ctx);
     }
   }
 
@@ -183,34 +189,51 @@ $( document ).ready(function() {
   }
 
   function redrawAll() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    for (var j = 0; j < paths.length; j++) {
-      var points = paths[j];
-      for (var i = 0; i < points.length; i++) {
-        var pt = points[i];
-        ctx.beginPath();
-        ctx.arc(pt.x, pt.y, pt.size, 0, 2 * Math.PI, false);
-        ctx.closePath();
-        ctx.fillStyle = pt.color;
-        ctx.fill();
-      }
-      fillPoints(points);
-    }
+    _redrawAll(ctx, canvas, paths);
   }
+}
 
-  // Verbindet die einzelnen Punkte von redrawAll()
-  function fillPoints(points) {
-    for (var i = 0; i < points.length-1; i++) {
-      var pt1 = points[i];
-      var pt2= points[i+1];
-      ctx.strokeStyle = pt1.color;
+// --------------------------------------------------
+
+function resetPaths() {
+  paths = [];
+  paths[0].push({
+    x: 20,
+    y: 30,
+    size: 30,
+    color: "black"
+  })
+  //redrawAll();
+}
+
+function _redrawAll(ctx, canvas, paths) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (var j = 0; j < paths.length; j++) {
+    var points = paths[j];
+    for (var i = 0; i < points.length; i++) {
+      var pt = points[i];
       ctx.beginPath();
-      ctx.lineWidth = pt1.size*2; // Radius vom Kreis = 2 * Höhe vom Rechteck
-      ctx.moveTo(pt1.x, pt1.y);
-      ctx.lineTo(pt2.x, pt2.y);
-      ctx.stroke();
+      ctx.arc(pt.x, pt.y, pt.size, 0, 2 * Math.PI, false);
+      ctx.closePath();
+      ctx.fillStyle = pt.color;
+      ctx.fill();
     }
+    _fillPoints(ctx, points);
   }
-});
+}
+
+// Verbindet die einzelnen Punkte von _redrawAll()
+function _fillPoints(ctx, points) {
+  for (var i = 0; i < points.length-1; i++) {
+    var pt1 = points[i];
+    var pt2= points[i+1];
+    ctx.strokeStyle = pt1.color;
+    ctx.beginPath();
+    ctx.lineWidth = pt1.size*2; // Radius vom Kreis = 2 * Höhe vom Rechteck
+    ctx.moveTo(pt1.x, pt1.y);
+    ctx.lineTo(pt2.x, pt2.y);
+    ctx.stroke();
+  }
+}
 
