@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
-import { WebsocketServiceService } from './services/websocket-service.service';
-//import { WebSocketService } from './web-socket.service';
+import * as socketio from '../../assets/js/socketio.js';
 
 @Component({
   selector: 'app-root',
@@ -14,16 +12,8 @@ export class AppComponent implements OnInit {
   userLoggedIn = true;
 
   ngOnInit(): void {
+    var socket = socketio.connect();
+    socket.emit("test", "daniel 123");
   }
-  /* constructor(private websocketServiceService: WebsocketServiceService) {
-    this.websocketServiceService.emit("test", "Hello World");
-  }
-  
-  ngOnInit() {
-    this.websocketServiceService.listen("testEvent").subscribe((data) => {
-      console.log(data);
-    });
-
-  } */
 
 }
