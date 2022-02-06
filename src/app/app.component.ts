@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketioService } from './socketio.service';
 import { NgModel } from '@angular/forms';
-//import { WebSocketService } from './web-socket.service';
+import { SocketioService } from './socketio.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -9,33 +9,39 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  count: number = 0;
+  newMessage: string = "";
+  messageList: string[] = [];
   title = 'socketio-angular';
   userLoggedIn = true;
-  
-  constructor(private socketService: SocketioService) {}
-  
+  socket: SocketioService = new SocketioService;
+
+  constructor() {
+    /* this.socket.connected();
+    this.socket.getNewMessage().subscribe((message: string) => {
+      this.messageList.push("appComponentTsOnInit");
+    }) */
+  }
+
+  ngOnInit(){
+  }
+
+  public sendMessage() {
+    //this.socket.sendMessage(this.newMessage);
+    //this.messageList.push('appComponentTsSendMessage');
+  }
+
+
+  /*sendMessage() {
+    this.chatServiceService.sendMessage(this.newMessage);
+    this.newMessage = '';
+  } */
+  /* constructor(private websocketServiceService: WebsocketServiceService) {
+    this.websocketServiceService.emit("test", "Hello World");
+  }
   ngOnInit() {
-    this.socketService.setupSocketConnection();
-  }
+    this.websocketServiceService.listen("testEvent").subscribe((data) => {
+      console.log(data);
+    });
+  } */
 
-  ngOnDestroy() {
-    this.socketService.disconnect();
-  }
-
-  increment() {
-    this.socketService.emitTest(this.count++);
-    
-  }
-}
-
-export class Clicker {
-  number: number;
-  constructor () {
-    this.number= 0;
-  }
-
-  onClick() {
-    this.number++;
-  }
 }

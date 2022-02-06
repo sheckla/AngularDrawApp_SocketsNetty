@@ -71,13 +71,20 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "HelloWorld:build:production"
+              "browserTarget": "HelloWorld:build:production",
+              "proxyConfig": "src/proxy.conf.json"
+
             },
             "development": {
-              "browserTarget": "HelloWorld:build:development"
+              "browserTarget": "HelloWorld:build:development",
+              "proxyConfig": "src/proxy.conf.json"
+
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json"
+            }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

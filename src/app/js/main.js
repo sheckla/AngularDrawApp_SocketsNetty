@@ -86,7 +86,6 @@ $( document ).ready(function() {
       color: color,
     })
     redrawAll(e);
-    if (getMousePosX(e) < 5 || getMousePosY(e) < 5) isPainting = false;
   }
 
   function getMousePosX(e) {
@@ -137,7 +136,7 @@ $( document ).ready(function() {
   }
 
   function updateDrawSizeDisplay() {
-    resetDrawSizeButton.firstChild.data = "Draw Size: " + drawSize + " (Click to reset)";
+    resetDrawSizeButton.firstChild.data = "Brush Size : " + drawSize;
   }
 
   function undo() {
