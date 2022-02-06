@@ -1,0 +1,19 @@
+{
+  "/api/*": {
+      "target": "http://localhost:9092",
+      "secure": false,
+      "logLevel": "info",
+      "changeOrigin" : true
+
+  },
+"/myotherapp/*": {
+      "target": "http://localhost:4200",
+      "secure": false,
+      "logLevel": "info"
+  },
+  "/api/": {
+    "target": "http://localhost:9092",
+    "secure": false,
+    "changeOrigin" : true
+}
+}
