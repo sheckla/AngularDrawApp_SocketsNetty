@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebsocketServiceService } from 'src/app/services/websocket-service.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent {
 
+  constructor(){
+
+  }
+
   //zeigt Eingabewerte
   clickme(email: any, passw: any) {
-    console.log(email + " " + passw);
+
+    //console.log(email + " " + passw);
   }
+
 
   
 

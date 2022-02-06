@@ -1,12 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as io from "socket.io-client";
-import { BehaviorSubject, Observable } from 'rxjs';
-import {enableProdMode} from '@angular/core';
-import * as express from "express";
-import * as socketio from "socket.io";
-
-enableProdMode();
-
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
