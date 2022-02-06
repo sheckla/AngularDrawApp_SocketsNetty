@@ -14,3 +14,4 @@ export class AppComponent implements OnInit {
     var socket = socketio.connect();
     socket.emit("test", "daniel 123");
   }
+}

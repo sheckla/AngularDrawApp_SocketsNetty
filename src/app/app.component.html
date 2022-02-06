@@ -1,14 +1,3 @@
-<router-outlet></router-outlet>
-
-<div *ngFor="let message of messageList">
-    <li style="color:red">
-        {{message}}
-    </li>
-</div>
-
-<input [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" />
-
-<button (click)="sendMessage()">Send Message</button>
 <div class="container-fluid text-white bg-dark">
   <app-navbar></app-navbar>
   <hr />
