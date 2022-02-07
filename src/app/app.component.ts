@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as socketio from '../../assets/js/socketio.js';
-import * as zeichentools from './js/zeichentools.js'
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,13 +17,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //socket.emit("test", "from app.component.ts");
   }
 
-  sendTest() {
-    zeichentools.tools();
-    this.socket.emit("test","from app.component.ts::sendTest()");
+  notifyClients() {
     this.socket.emit("notifyClients", "notifyClients");
   }
 }
-// terminal ooad/whiteboard

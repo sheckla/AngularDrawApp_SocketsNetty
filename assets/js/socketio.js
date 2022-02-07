@@ -1,6 +1,12 @@
+// mvnw spring-boot:run
+// stop with strg + c
+
+var socket;
+var socketPaths;
+
 export function connect() {
   var eventCount = 1;
-  var socket =  io('http://localhost:9092',{
+  socket =  io('http://localhost:9092',{
   transports: ['websocket'],
   upgrade: false
 });
@@ -15,8 +21,17 @@ socket.on("notifyClients", (data) => {
     console.log("(different Client) notifyClients from: @" + data + " eventCount:" + eventCount++);
   }
 });
-
-//socket.emit("test", "from socketio.js");
-
 return socket;
+}
+
+export function getSocket() {
+  return socket;
+}
+
+export function sendCanvasPathDataEvent(path) {
+  socket.emit("sendCanvasPathDataToServer", path);
+}
+
+export function sendChatEvent(msg) {
+  socket.emit("chatEvent", msg);
 }
