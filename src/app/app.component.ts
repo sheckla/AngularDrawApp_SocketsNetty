@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as socketio from '../../assets/js/socketio.js';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,9 +10,16 @@ import * as socketio from '../../assets/js/socketio.js';
 export class AppComponent implements OnInit {
   title = 'socketio-angular';
   userLoggedIn = true;
+  private socket;
+
+  constructor(){
+    this.socket = socketio.connect();
+  }
 
   ngOnInit(): void {
-    var socket = socketio.connect();
-    socket.emit("test", "daniel 123");
+  }
+
+  notifyClients() {
+    this.socket.emit("notifyClients", "notifyClients");
   }
 }

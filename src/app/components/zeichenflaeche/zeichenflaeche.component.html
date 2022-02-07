@@ -1,3 +1,16 @@
+<button type="button" class="" (click)="resetPaths()"> resetPaths </button>
+<button type="button" class="" (click)="randomDots()"> randomDots </button>
+<button type="button" class="" (click)="printPath()"> print path to console </button>
+<button type="button" class="" (click)="sendPaths()"> sendPaths </button>
+<div id="chatDisplay">
+  <ul>
+    <li *ngFor = "let msg of messages">{{msg}}</li>
+  </ul>
+</div>
+<div id="chatInput">
+  <input type="text" id="chatBox" #chatMessage>
+  <button (click)="sendMessage(chatMessage.value)">Send Message</button>
+</div>
 
 <div class="container pt-3 pb-3 ">
 
@@ -6,6 +19,7 @@
     <div class="row w-100">
         <div id="widthForCanvas" class="col">
             <canvas id="zeichenflaeche" class="bg-white " ></canvas>
+            <script src='../../js/canvas.js'></script>
         </div>
     </div>
 
@@ -41,3 +55,15 @@
   </div>
 
 </div>
+
+<!-- Example for Angular button input parameter and output via .ts -->
+<!-- <div id="chatDisplay">
+  <ul>
+    <li *ngFor = "let msg of messages">{{msg}}</li>
+  </ul>
+</div>
+<div id="chatInput">
+  <input type="text" id="chatBox" #chatMessage>
+  <button (click)="sendMessage(chatMessage.value)">Send Message</button>
+</div>
+ -->
