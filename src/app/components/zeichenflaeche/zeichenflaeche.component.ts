@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import * as canvasHandler from '../../js/canvasHandler.js'
+import { Component, NgZone, OnInit } from '@angular/core';
+import * as canvas from '../../js/canvas.js'
 import * as socketio from '../../../../assets/js/socketio.js';
-import { PathModel } from 'src/app/PathModel.js';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-zeichenflaeche',
@@ -11,72 +11,63 @@ import { PathModel } from 'src/app/PathModel.js';
 
 
 export class ZeichenflaecheComponent implements OnInit {
-  model: PathModel = {
-    x: 20,
-    y: 30
-  };
+  ngZone: NgZone;
   paths;
-  messages: string[] = [];
+  previousPaths: any[] = [];
 
   ngOnInit(): void {
   }
 
-  constructor() {
-    this.paths = window["paths"]
-    this.initCanvasPathDataListeneverEvent();
-    this.initChatEvent();
+  constructor(ngZone: NgZone) {
+    this.ngZone = ngZone;
+  }
 
-    setInterval(function() {
-      var paths = window["paths"];
-      if (paths.length == 0) return;
-      var _paths: Paths = new Paths();
-      for (var i = 0; i < paths.length; i++) {
-        var _path: Path = new Path();
-        var points = paths[i];
-        for (var j = 0; j < points.length; j++) {
-          var p = points[j];
-          var point: Point = new Point(p.x, p.y, p.size, p.color);
-          _path.push(point);
+  initConnection() {
+    socketio.getSocket().on("sendCanvasPathDataToClient", (data) => {
+      canvas.prepareOtherClientPathData(data);
+    })
+
+    socketio.getSocket().on("resetPathsRequestToClient", () =>{
+      canvas.clearAllPaths();
+    });
+
+    socketio.getSocket().on("sendRoomClientsIDs", (clients) =>{
+      var json = JSON.parse(clients);
+      for (var i = 0; i < json.length; i++) {
+        if (socketio.getName() != json[i]) {
+          canvas.createNewClientPaths(json[i]);
         }
-        _paths.push(_path);
       }
-      socketio.getSocket().emit("sendCanvasPathDataToServer", JSON.stringify(_paths));
-    }, 200);
+    });
 
+    socketio.getSocket().on("clientDisconnected", (clientID) => {
+      canvas.removeClientPaths(clientID);
+    })
+
+    const sourceInterval = interval(1);
+    const sendPathsIntervallEvent = sourceInterval.subscribe(() => {
+      this.sendPaths();
+    });
   }
 
-  resetPaths() {
-    var point1 = new Point(22,22,30,"rgb(22,22,22");
-    var point2 = new Point(222,222,30,"rgb(22,22,22");
-
-    var point3 = new Point(100,122,10,"rgb(111,22,22");
-    var point4 = new Point(500,122,10,"rgb(111,22,22");
-
-    var path1 = new Path();
-    path1.push(point1);
-    path1.push(point2);
-
-    var path2 = new Path();
-    path2.push(point4)
-    path2.push(point3)
-
-    var paths: Path[] = [path1, path2, path1, path2, path2];
-    canvasHandler.resetTypescript(paths);
+  closeConnection() {
+    socketio.getSocket().disconnect();
   }
-
-  randomDots() {
-    canvasHandler.random();
-  }
-
-  printPath() {
-    this.paths = window["paths"] // varFromJsFile = 'test'
-    console.log(this.paths);
-  }
-
-
 
   sendPaths() {
-    this.paths = window["paths"];
+    if (!socketio.getSocket()) return;
+
+    this.paths = canvas.client.paths;
+    this.previousPaths.push(JSON.parse(JSON.stringify(this.paths)));
+    if (this.previousPaths.length > 5) this.previousPaths.shift();
+
+    if (JSON.stringify(this.paths) == JSON.stringify(this.previousPaths[this.previousPaths.length-2])) return;
+
+    this.emitPaths();
+  }
+
+  emitPaths() {
+    this.paths = canvas.client.paths;
     var _paths: Paths = new Paths();
     for (var i = 0; i < this.paths.length; i++) {
       var _path: Path = new Path();
@@ -88,33 +79,56 @@ export class ZeichenflaecheComponent implements OnInit {
       }
       _paths.push(_path);
     }
+
     socketio.getSocket().emit("sendCanvasPathDataToServer", JSON.stringify(_paths));
   }
 
-  initCanvasPathDataListeneverEvent() {
-    socketio.getSocket().on("sendCanvasPathDataToClient", (data) => {
-      console.log("received paths");
-      canvasHandler.reset(data);
-    })
+  // Buttons
+  clearClientCanvas() {
+    canvas.clearClientPaths();
+    this.sendPaths;
+  }
+
+  randomDots() {
+    canvas.generateRandomPaths();
+    this.sendPaths();
+  }
+
+  clearAllPaths() {
+    if (socketio.getSocket()) {
+      socketio.getSocket().emit("resetPathsRequestfromClient");
+    }
+  }
+
+  printPath() {
+    this.paths = canvas.client.paths;
+    console.log(this.paths);
   }
 
   sendMessage(msg: string) {
+    // TODO clear text after sent message
     socketio.getSocket().emit("chatMessageToServer", msg);
   }
 
-  initChatEvent() {
-    socketio.getSocket().on("chatMessageToClient", (data) => {
-      this.messages.push(data);
-    })
+  publicFun() {
+    this.ngZone.run(() => {
+      console.log("yep");
+    });
   }
+
+  privateFun() {
+    console.log("priv fun");
+  }
+
 }
 
-
 class Paths {
+  clientID: string = '';
   paths: Path[];
 
   constructor() {
     this.paths = [];
+    this.clientID = socketio.getName();
   }
 
   push(path: Path) {

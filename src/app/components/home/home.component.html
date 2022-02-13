@@ -1,6 +1,13 @@
 <h1 class="text-center">Anmelden</h1>
 <div class="container pt-3 pb-3">
-  <form >
+  <form (ngSubmit)="onSubmit($event)">
+
+      <div class="mb-3 row d-flex justify-content-center ">
+        <label for="emailInput" class="form-label text-center">Name:</label>
+        <input type="text" value="Peter" class="form-control w-75" id="nameInput" aria-describedby="nameInputHelp" placeholder="Musterknabe42" #email>
+        <div id="nameInputHelp" class="form-text w-75">Mindestens 6 Zeichen</div>
+      </div>
+
       <div class="mb-3 row d-flex justify-content-center ">
         <label for="emailInput" class="form-label text-center">E-Mail:</label>
         <input type="email" class="form-control w-75" id="emailInput" aria-describedby="emailHelp" placeholder="max.mustermann@gmail.com" #email>
@@ -12,7 +19,7 @@
         <input type="password" class="form-control w-75" id="passwordInput" #_passw>
       </div>
       <div class="text-center">
-          <button type="submit" class="btn btn-success" (click)="clickme(email.value, _passw.value)">Anmelden</button>
+          <button type="submit" class="btn btn-success">Anmelden</button>
       </div>
     </form>
 </div>

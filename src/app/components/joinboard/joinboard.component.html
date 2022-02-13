@@ -1,10 +1,61 @@
-<form>
+<div class="text-center">
+  <h1>Wilkommen {{userName}}!</h1>
+</div>
+
+<div *ngIf="userConnected; else elseBlock">
+  <div class="align-center">
+  <button class="btn btn-success float-left ms-2" (click)="disconnect()"> Disconnect</button>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <form>
     <div class="mb-3 row d-flex justify-content-center ">
       <label for="boardcode" class="form-label text-center">Code:</label>
       <input type="text" class="form-control w-75" id="boardcode" placeholder="12345" #code>
     </div>
-
-    <div class="text-center">
-        <button type="submit" class="btn btn-success" (click)="submit(code.value)"> Anmelden</button>
+    <div class="col col-sm-auto">
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-success" (click)="startRoom(code.value)"> Session erstellen</button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-success float-end ms-2" (click)="enterRoom(code.value)"> Session beitreten</button>
+        </div>
+      </div>
     </div>
-</form>
+  </form>
+</ng-template>
+
+<div class="text-center mt-3">
+  {{errorDisplayMessage}}
+</div>
+
+<div style="margin-top:1em"></div>
+
+<div class="float-left mt-3 box">
+  <h1>{{roomText}}</h1>
+  <h3>{{otherUsers}}</h3>
+</div>
+<div id="chatDisplay">
+  <ul>
+    <li *ngFor = "let msg of users">{{msg}}</li>
+  </ul>
+</div>
+
+<div *ngIf="userConnected; else chatElseBlock">
+  <!-- https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-scrollable.html -->
+  <div>
+    <ul id="ss_elem_list" tabindex="0" role="listbox" aria-labelledby="ss_elem">
+      <li tabindex="1" *ngFor = "let msg of messages" style="color: black !important">{{msg}}</li>
+    </ul>
+  </div>
+  <div id="chatInput">
+    <input type="text" id="chatBox" #chatMessage>
+    <button (click)="sendMessage(chatMessage.value)">Senden</button>
+  </div>
+</div>
+<ng-template #chatElseBlock>
+  <div>
+
+  </div>
+</ng-template>

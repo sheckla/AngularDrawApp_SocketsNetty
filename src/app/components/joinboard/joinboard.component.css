@@ -1,0 +1,17 @@
+/*  https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-scrollable.html
+ */
+
+[role="listbox"] {
+  margin: 1em 0 0;
+  padding: 0;
+  min-height: 31em;
+  border: 1px solid #aaa;
+  background: white;
+}
+
+[role="listbox"]#ss_elem_list {
+  position: relative;
+  max-height: 18em;
+  overflow-y: auto;
+}
+
