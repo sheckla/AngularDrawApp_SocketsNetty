@@ -1,10 +1,28 @@
-<div class="text-center">
-  <h1>Wilkommen {{userName}}!</h1>
+
+<div class="col col-sm-auto mb-3">
+  <div class="row">
+    <div class="text-center">
+      <h1>Wilkommen {{userName}}!</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <div *ngIf="showReturnToRegisterUI">
+        <button type="submit" class="btn btn-secondary" (click)="changeName()"><img src="https://i.imgur.com/rl3sk5b.png" width="20"/> Zurück zur Anmeldung</button>
+      </div>
+    </div>
+  </div>
 </div>
 
+<hr/>
+
 <div *ngIf="userConnected; else elseBlock">
-  <div class="align-center">
-  <button class="btn btn-success float-left ms-2" (click)="disconnect()"> Disconnect</button>
+  <div class="col col-sm-auto">
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-danger" (click)="disconnect()"> Raum verlassen</button>
+      </div>
+    </div>
   </div>
 </div>
 <ng-template #elseBlock>
@@ -33,12 +51,12 @@
 <div style="margin-top:1em"></div>
 
 <div class="float-left mt-3 box">
-  <h1>{{roomText}}</h1>
-  <h3>{{otherUsers}}</h3>
+  <h1><b>{{currentRoomText}}</b></h1>
+  <h3>{{otherUsersText}}</h3>
 </div>
 <div id="chatDisplay">
   <ul>
-    <li *ngFor = "let msg of users">{{msg}}</li>
+    <li *ngFor = "let msg of userList" style="color: red !important">{{msg}}</li>
   </ul>
 </div>
 
@@ -46,12 +64,12 @@
   <!-- https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-scrollable.html -->
   <div>
     <ul id="ss_elem_list" tabindex="0" role="listbox" aria-labelledby="ss_elem">
-      <li tabindex="1" *ngFor = "let msg of messages" style="color: black !important">{{msg}}</li>
+      <li tabindex="1" *ngFor = "let msg of messages">{{msg}}</li>
     </ul>
   </div>
   <div id="chatInput">
     <input type="text" id="chatBox" #chatMessage>
-    <button (click)="sendMessage(chatMessage.value)">Senden</button>
+    <button class="btn btn-success m-1" (click)="sendMessage(chatMessage.value)">Senden</button>
   </div>
 </div>
 <ng-template #chatElseBlock>

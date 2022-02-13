@@ -1,46 +1,72 @@
-Testing Tools:
-<button type="button" class="" (click)="clearAllPaths()"> Session Zurücksetzen </button>
-<button type="button" class="" (click)="randomDots()"> randomDots </button>
-<button type="button" class="" (click)="printPath()"> print path to console </button>
-
-<div class="container pt-3 pb-3 ">
-
-<div class="container pt-1 pb-1 ">
-    <div class="row w-100">
-        <div id="widthForCanvas" class="col">
-            <canvas id="zeichenflaeche" class="bg-white " ></canvas>
-            <script type="module" src='../../js/canvas.js'></script>
-        </div>
-    </div>
-</div>
 <div class="container pt-1 pb-1">
   <div class="row ">
     <div class="col">
       <!-- ELEMENT 1 -->
       <div class="row">
         <div class="col">
-            <button id="clear" type="button" class="btn btn-primary" (click)="clearClientCanvas()">Zurücksetzen</button>
         </div>
-    </div>
+      </div>
     </div>
     <div class="col">
       <!-- ELEMENT 1 -->
       <div class="row">
         <div class="col">
-            <button id="saveImageButton" type="button" class="btn btn-primary float-end me-5">Bild Speichern</button>
         </div>
-    </div>
-    </div>
-      <div class="col col-sm-auto">
-        <!-- ELEMENT 3 -->
-        <div class="row">
-          <div class="col">
-            <button id="undo" type="button" class="btn btn-primary">Undo</button>
-            <button id="redo" type="button" class="btn btn-primary float-end ms-2">Redo</button>
-          </div>
       </div>
-  </div>
+    </div>
+    <div class="col col-sm-auto">
+      <!-- ELEMENT 3 -->
+      <div class="row">
+        <div class="col">
+          Testing Tools:
+          <button type="button" class="btn btn-secondary me-1" (click)="clearAllPaths()"> Session Zurücksetzen </button>
+        <button type="button" class="btn btn-secondary me-1" (click)="randomDots()"> randomDots </button>
+        <button type="button" class="btn btn-secondary" (click)="printPath()"> print path to console </button>
+        </div>
+      </div>
+    </div>
 
+  </div>
+</div>
+
+<div class="container pt-1 pb-1 ">
+  <div class="row w-100">
+    <div id="widthForCanvas" class="col">
+      <canvas id="zeichenflaeche" class="bg-white " ></canvas>
+      <script type="module" src='../../js/canvas.js'></script>
+    </div>
+  </div>
+</div>
+
+<div class="container pt-1 pb-1">
+  <div class="row ">
+    <div class="col">
+      <!-- ELEMENT 1 -->
+      <div class="row">
+        <div class="col">
+          <button id="clear" type="button" class="btn btn-primary" (click)="clearClientCanvas()">Zurücksetzen</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <!-- ELEMENT 1 -->
+      <div class="row">
+        <div class="col">
+          <button id="saveImageButton" type="button" class="btn btn-primary float-end me-5">Bild Speichern</button>
+        </div>
+      </div>
+    </div>
+    <div class="col col-sm-auto">
+      <!-- ELEMENT 3 -->
+      <div class="row">
+        <div class="col">
+          <button id="undo" type="button" class="btn btn-primary">Undo</button>
+          <button id="redo" type="button" class="btn btn-primary float-end ms-2">Redo</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <!-- Example for Angular button input parameter and output via .ts -->
@@ -53,4 +79,4 @@ Testing Tools:
   <input type="text" id="chatBox" #chatMessage>
   <button (click)="sendMessage(chatMessage.value)">Send Message</button>
 </div>
- -->
+-->

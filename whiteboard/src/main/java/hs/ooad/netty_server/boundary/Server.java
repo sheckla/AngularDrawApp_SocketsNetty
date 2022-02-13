@@ -1,8 +1,10 @@
 package hs.ooad.netty_server.boundary;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 // ctl + k -> o
@@ -60,7 +62,7 @@ public class Server implements ContractWithNettyServer {
       @Override
       public void onDisconnect(SocketIOClient client) {
         System.out.println("ClientID: " + client.getSessionId() + " disconnected!");
-        server.getBroadcastOperations().sendEvent("clientDisconnected");
+        server.getBroadcastOperations().sendEvent("clientDisconnected", client.getSessionId());
       }
     });
 
@@ -160,6 +162,24 @@ public class Server implements ContractWithNettyServer {
         ArrayList<String> clientIDs = getClientsIDs(roomID);
         String json = new Gson().toJson(clientIDs);
         server.getRoomOperations(roomID).sendEvent("sendRoomClientsIDs", json);
+      }
+    });
+
+    server.addEventListener("requestRoomClientsNames", String.class, new DataListener<String>() {
+
+      @Override
+      public void onData(SocketIOClient client, String data, AckRequest ackSender) throws Exception {
+        String roomID = getRoomId(client);
+        server.getRoomOperations(roomID).sendEvent("requestRoomClientsNamesFromServer", client);
+      }
+    });
+
+    server.addEventListener("sendClientNameToServer", String.class, new DataListener<String>() {
+
+      @Override
+      public void onData(SocketIOClient client, String data, AckRequest ackSender) throws Exception {
+        String roomID = getRoomId(client);
+        server.getRoomOperations(roomID).sendEvent("sendClientNameToClients", data);
       }
     });
   }

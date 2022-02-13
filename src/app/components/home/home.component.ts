@@ -8,19 +8,22 @@ import { UserHandlerService } from 'src/app/user-handler.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  errorDisplayMessage = '';
 
   constructor(private userHandlerService: UserHandlerService){
 
   }
 
-  //zeigt Eingabewerte
   onSubmit(e: any) {
     var name = e.target.nameInput.value;
-    var email = e.target.emailInput.value;
-    var password = e.target.passwordInput.value;
+    /* var email = e.target.emailInput.value;
+    var password = e.target.passwordInput.value; */
 
-    //console.log("User - " + name + " has signed in");
-    this.userHandlerService.updateResultList(name);
+    if (name.length >= 6) {
+      this.userHandlerService.updateResultList(name);
+    } else {
+      this.errorDisplayMessage = "Name ist zu kurz";
+    }
   }
 
 }

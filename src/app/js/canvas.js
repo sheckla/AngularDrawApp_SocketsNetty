@@ -1,5 +1,3 @@
-$('')
-
 class PathData{
   constructor(clientID, paths) {
     this.clientID = clientID;
@@ -28,12 +26,13 @@ function canvasEngine() {
   var buttons = document.getElementsByClassName('color-button');
   var clientPathsRedoStack = [];
   var isPainting = false;
-  var drawSize = 10;
+  var drawSize = 4;
   var color = "black";
 
   initButtons();
   initListeners();
   initCanvasDim();
+  updateDrawSizeDisplay();
 
   function initButtons() {
     // General Buttons
@@ -128,7 +127,7 @@ function canvasEngine() {
   }
 
   function resetDrawSize() {
-    drawSize = 10;
+    drawSize = 3;
     updateDrawSizeDisplay();
   }
 
@@ -252,7 +251,6 @@ function redrawAll() {
 
 export function createNewClientPaths(clientID) {
   var newClient = new PathData(clientID);
-  console.log(otherClients);
   for (var i = 0; i < otherClients.length; i++) {
     if (otherClients[i].clientID == clientID) return;
   }
@@ -266,7 +264,6 @@ export function removeClientPaths(clientID) {
       otherClients.splice(i,1);
     }
   }
-  console.log(otherClients);
 }
 
 export function generateRandomPaths() {

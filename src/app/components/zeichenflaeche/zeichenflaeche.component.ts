@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as canvas from '../../js/canvas.js'
 import * as socketio from '../../../../assets/js/socketio.js';
 import { interval } from 'rxjs';
@@ -11,15 +11,13 @@ import { interval } from 'rxjs';
 
 
 export class ZeichenflaecheComponent implements OnInit {
-  ngZone: NgZone;
   paths;
   previousPaths: any[] = [];
 
   ngOnInit(): void {
   }
 
-  constructor(ngZone: NgZone) {
-    this.ngZone = ngZone;
+  constructor() {
   }
 
   initConnection() {
@@ -52,6 +50,7 @@ export class ZeichenflaecheComponent implements OnInit {
 
   closeConnection() {
     socketio.getSocket().disconnect();
+    canvas.clearClientPaths();
   }
 
   sendPaths() {
@@ -109,17 +108,6 @@ export class ZeichenflaecheComponent implements OnInit {
     // TODO clear text after sent message
     socketio.getSocket().emit("chatMessageToServer", msg);
   }
-
-  publicFun() {
-    this.ngZone.run(() => {
-      console.log("yep");
-    });
-  }
-
-  privateFun() {
-    console.log("priv fun");
-  }
-
 }
 
 class Paths {

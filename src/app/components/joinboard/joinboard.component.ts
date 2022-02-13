@@ -10,17 +10,19 @@ import { ZeichenflaecheComponent } from '../zeichenflaeche/zeichenflaeche.compon
   styleUrls: ['./joinboard.component.css']
 })
 export class JoinboardComponent implements OnInit {
+  currentRoomText : String = '';
+  otherUsersText: string = '';
+  errorDisplayMessage = "";
   userName : String = '';
-  roomText : String = '';
-  users: string[] = [];
-  otherUsers: string = '';
+  userList: string[] = [];
   messages: string[] = [];
   userConnected = false;
-  errorDisplayMessage = "";
+  showReturnToRegisterUI = false;
 
   constructor(private userHandlerService: UserHandlerService, private zeichenflaeche: ZeichenflaecheComponent) {
     this.userHandlerService.resultList$.subscribe(userName => {
       this.userName = userName.toString();
+      this.showReturnToRegisterUI = true;
     });
   }
 
@@ -43,40 +45,39 @@ export class JoinboardComponent implements OnInit {
 
     // Set Room-ID Text in HTML
     socketio.getSocket().on("enterRoomSuccessfull", (data) => {
-      this.roomText = "Aktueller Raum: \"" + data + "\"";
+      this.currentRoomText = "Aktueller Raum: \"" + data + "\"";
       this.userConnected = true;
+      this.showReturnToRegisterUI = false;
+      this.userList = [];
+      this.otherUsersText = "Andere Nutzer in der Session:";
+      socketio.getSocket().emit("requestRoomClientsNames");
     })
 
     socketio.getSocket().on("enterRoomFailure", () => {
-      console.log("nicht vorhanden!");
+      console.log("Raum nicht vorhanden!");
       this.errorDisplayMessage = "Der Raum ist nicht vorhanden.";
       this.disconnect();
     })
 
     socketio.getSocket().on("createRoomFailure", () => {
-      console.log("doppelt!");
+      console.log("Raum schon vorhanden!");
       this.errorDisplayMessage = "Der Raum existiert schon. Wähle anderen Raumcode";
       this.disconnect();
     })
 
-    socketio.getSocket().on("sendRoomClientsIDs", (data) =>{
-      this.users = [];
-      var json = JSON.parse(data);
+    socketio.getSocket().on("requestRoomClientsNamesFromServer", () =>{
+      socketio.getSocket().emit("sendClientNameToServer", this.userName);
+    });
 
-      if (json.length == 1) {
-        this.otherUsers = "";
-      } else {
-        for (var i = 0; i < json.length; i++) {
-          this.otherUsers = "Andere Nutzer in der Session:";
-          if (socketio.getName() != json[i]) {
-            this.users.push(json[i]);
-          }
-        }
+    socketio.getSocket().on("sendClientNameToClients", (clientName) =>{
+      if (clientName && clientName != this.userName && !this.userList.includes(clientName)) {
+        this.userList.push(clientName);
       }
     });
 
     socketio.getSocket().on("clientDisconnected", () => {
-      socketio.getSocket().emit("requestRoomClientsIDs");
+      this.userList = [];
+      socketio.getSocket().emit("requestRoomClientsNames");
     })
 
     socketio.getSocket().on("chatMessageToClient", (data) => {
@@ -84,20 +85,24 @@ export class JoinboardComponent implements OnInit {
     })
   }
 
+  changeName() {
+    this.userHandlerService.updateResultList("");
+  }
+
   disconnect() {
     socketio.getSocket().emit("leaveRoom");
     this.zeichenflaeche.closeConnection();
     this.userConnected = false;
-    this.otherUsers = '';
-    this.roomText = '';
-    this.users = [];
+    this.showReturnToRegisterUI = true;
+    this.otherUsersText = '';
+    this.currentRoomText = '';
+    this.userList = [];
     this.messages = [];
   }
 
   enterRoom(code: any) {
     this.initConnection();
     socketio.getSocket().emit("enterRoom", code); // request Room-ID from Server
-    socketio.getSocket().emit("requestRoomClientsIDs"); // requests other Clients in current Session
   }
 
   startRoom(code: any) {

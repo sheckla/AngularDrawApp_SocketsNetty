@@ -4,11 +4,12 @@
 
       <div class="mb-3 row d-flex justify-content-center ">
         <label for="emailInput" class="form-label text-center">Name:</label>
-        <input type="text" value="Peter" class="form-control w-75" id="nameInput" aria-describedby="nameInputHelp" placeholder="Musterknabe42" #email>
+        <input type="text" value="dsadasd" class="form-control w-75" id="nameInput" aria-describedby="nameInputHelp" placeholder="Musterknabe42" #email>
         <div id="nameInputHelp" class="form-text w-75">Mindestens 6 Zeichen</div>
       </div>
 
-      <div class="mb-3 row d-flex justify-content-center ">
+       <!-- Erweiterte Anmeldemöglichkeiten für später -->
+      <!-- <div class="mb-3 row d-flex justify-content-center ">
         <label for="emailInput" class="form-label text-center">E-Mail:</label>
         <input type="email" class="form-control w-75" id="emailInput" aria-describedby="emailHelp" placeholder="max.mustermann@gmail.com" #email>
         <div id="emailHelp" class="form-text w-75">Wir geben deine E-mail nicht weiter.</div>
@@ -17,9 +18,13 @@
       <div class="mb-3 row d-flex justify-content-center text-center">
         <label for="passwordInput" class="form-label">Passwort:</label>
         <input type="password" class="form-control w-75" id="passwordInput" #_passw>
-      </div>
+      </div>-->
       <div class="text-center">
           <button type="submit" class="btn btn-success">Anmelden</button>
       </div>
     </form>
+</div>
+
+<div class="text-center mt-3">
+  {{errorDisplayMessage}}
 </div>
