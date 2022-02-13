@@ -1,6 +1,13 @@
 /*  https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-scrollable.html
  */
 
+ hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 [role="listbox"] {
   margin: 1em 0 0;
   padding: 0;
@@ -13,5 +20,10 @@
   position: relative;
   max-height: 18em;
   overflow-y: auto;
+}
+
+li {
+  border-bottom: 1px solid rgb(150, 150, 150);
+  color: black;
 }
 
