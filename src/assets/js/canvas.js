@@ -1,3 +1,4 @@
+
 class PathData{
   constructor(clientID, paths) {
     this.clientID = clientID;
@@ -8,7 +9,6 @@ class PathData{
     this.paths = paths;
   }
 }
-
 
 export var client = new PathData("0");
 var otherClients = [];

@@ -7,13 +7,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSliderModule } from '@angular/material/slider';
-import { SocketioService } from './socketio.service';
 import { ZeichenflaecheComponent } from './components/zeichenflaeche/zeichenflaeche.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ZeichentoolsComponent } from './components/zeichentools/zeichentools.component';
 import { JoinboardComponent } from './components/joinboard/joinboard.component';
-
 
 @NgModule({
   declarations: [
@@ -22,16 +20,16 @@ import { JoinboardComponent } from './components/joinboard/joinboard.component';
     NavbarComponent,
     HomeComponent,
     ZeichentoolsComponent,
-    JoinboardComponent
+    JoinboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatSliderModule
+    MatSliderModule,
   ],
-  providers: [SocketioService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

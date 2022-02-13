@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { UserHandlerService } from 'src/app/user-handler.service';
-import * as socketio from '../../../../assets/js/socketio';
+import { UserHandlerService } from 'src/app/services/user-handler.service';
+import * as socketio from '../../../assets/js/socketio';
 import { ZeichenflaecheComponent } from '../zeichenflaeche/zeichenflaeche.component';
 
 @Component({
@@ -10,6 +10,7 @@ import { ZeichenflaecheComponent } from '../zeichenflaeche/zeichenflaeche.compon
   styleUrls: ['./joinboard.component.css']
 })
 export class JoinboardComponent implements OnInit {
+  roomName: String = '';
   currentRoomText : String = '';
   otherUsersText: string = '';
   errorDisplayMessage = "";
@@ -20,13 +21,36 @@ export class JoinboardComponent implements OnInit {
   showReturnToRegisterUI = false;
 
   constructor(private userHandlerService: UserHandlerService, private zeichenflaeche: ZeichenflaecheComponent) {
-    this.userHandlerService.resultList$.subscribe(userName => {
+    this.subcribeToUserHandlerService();
+  }
+
+  subcribeToUserHandlerService() {
+    this.userHandlerService.clientName$.subscribe(userName => {
       this.userName = userName.toString();
       this.showReturnToRegisterUI = true;
     });
   }
 
   ngOnInit(): void {
+  }
+
+  generateCode() {
+    var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    var code = '';
+    for(var i = 0; i < 9; i++) {
+      code += letters.charAt(Math.floor(Math.random() * letters.length));
+    }
+    this.roomName = code;
+    this.copyRoomNameToClipboard();
+  }
+
+  onRoomNameChange(newRoomName) {
+    this.roomName = newRoomName;
+  }
+
+  copyRoomNameToClipboard() {
+    navigator.clipboard.writeText(this.roomName.toString());
+    this.errorDisplayMessage = "Raumname \"" + this.roomName + "\" wurde in die Zwischenablage kopiert.";
   }
 
   // Called upon then reloading/closing the Website
@@ -45,7 +69,7 @@ export class JoinboardComponent implements OnInit {
 
     // Set Room-ID Text in HTML
     socketio.getSocket().on("enterRoomSuccessfull", (data) => {
-      this.currentRoomText = "Aktueller Raum: \"" + data + "\"";
+      this.currentRoomText = "Raum \"" + data + "\"";
       this.userConnected = true;
       this.showReturnToRegisterUI = false;
       this.userList = [];
@@ -55,14 +79,14 @@ export class JoinboardComponent implements OnInit {
 
     socketio.getSocket().on("enterRoomFailure", () => {
       console.log("Raum nicht vorhanden!");
-      this.errorDisplayMessage = "Der Raum ist nicht vorhanden.";
       this.disconnect();
+      this.errorDisplayMessage = "Der Raum ist nicht vorhanden.";
     })
 
     socketio.getSocket().on("createRoomFailure", () => {
       console.log("Raum schon vorhanden!");
-      this.errorDisplayMessage = "Der Raum existiert schon. Wähle anderen Raumcode";
       this.disconnect();
+      this.errorDisplayMessage = "Der Raum existiert schon. Wähle anderen Raumcode";
     })
 
     socketio.getSocket().on("requestRoomClientsNamesFromServer", () =>{
@@ -85,8 +109,8 @@ export class JoinboardComponent implements OnInit {
     })
   }
 
-  changeName() {
-    this.userHandlerService.updateResultList("");
+  returnToHome() {
+    this.userHandlerService.updateClientName("");
   }
 
   disconnect() {
@@ -94,20 +118,30 @@ export class JoinboardComponent implements OnInit {
     this.zeichenflaeche.closeConnection();
     this.userConnected = false;
     this.showReturnToRegisterUI = true;
+    this.errorDisplayMessage = '';
     this.otherUsersText = '';
     this.currentRoomText = '';
     this.userList = [];
     this.messages = [];
   }
 
-  enterRoom(code: any) {
+  enterRoom() {
+    if (!this.roomName) {
+      this.errorDisplayMessage = "Kein Raum-Name eingegeben";
+      return;
+    }
     this.initConnection();
-    socketio.getSocket().emit("enterRoom", code); // request Room-ID from Server
+    socketio.getSocket().emit("enterRoom", this.roomName); // request Room-ID from Server
+    socketio.getSocket().emit("requestRoomClientsIDs");
   }
 
-  startRoom(code: any) {
+  startRoom() {
+    if (!this.roomName) {
+      this.errorDisplayMessage = "Kein Raum-Name eingegeben";
+      return;
+    }
     this.initConnection();
-    socketio.getSocket().emit("createRoom", code);
+    socketio.getSocket().emit("createRoom", this.roomName);
     this.sendMessage("hat einen Raum erstellt!");
   }
 
@@ -115,9 +149,5 @@ export class JoinboardComponent implements OnInit {
     if (msg.length == 0) return;
 
     socketio.getSocket().emit("chatMessageToServer", this.userName + ": " + msg);
-  }
-
-  pop() {
-    console.log("pop");
   }
 }

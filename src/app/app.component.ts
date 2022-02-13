@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserHandlerService } from 'src/app/user-handler.service';
+import { UserHandlerService } from './services/user-handler.service';
 
 
 @Component({
@@ -8,12 +8,16 @@ import { UserHandlerService } from 'src/app/user-handler.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'socketio-angular';
   userLoggedIn = false;
+  title: any = 'OOAD'
 
   constructor(private userHandlerService: UserHandlerService){
-    this.userHandlerService.resultList$.subscribe(resultList => {
-      if (resultList.length > 0) {
+    this.subscribeToUserHandlerService();
+  }
+
+  subscribeToUserHandlerService() {
+    this.userHandlerService.clientName$.subscribe(userName => {
+      if (userName.length >=6) {
         this.userLoggedIn = true;
       } else {
         this.userLoggedIn = false;

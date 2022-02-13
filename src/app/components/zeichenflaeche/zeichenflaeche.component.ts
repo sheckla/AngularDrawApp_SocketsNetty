@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import * as canvas from '../../js/canvas.js'
-import * as socketio from '../../../../assets/js/socketio.js';
+import * as canvas from '../../../assets/js/canvas.js'
+import * as socketio from '../../../assets/js/socketio.js';
 import { interval } from 'rxjs';
+import { Point } from './Point';
+import { Paths } from './Paths';
+import { Path } from './Path';
 
 @Component({
   selector: 'app-zeichenflaeche',
@@ -67,7 +70,7 @@ export class ZeichenflaecheComponent implements OnInit {
 
   emitPaths() {
     this.paths = canvas.client.paths;
-    var _paths: Paths = new Paths();
+    var _paths: Paths = new Paths(socketio.getName());
     for (var i = 0; i < this.paths.length; i++) {
       var _path: Path = new Path();
       var points = this.paths[i];
@@ -107,69 +110,5 @@ export class ZeichenflaecheComponent implements OnInit {
   sendMessage(msg: string) {
     // TODO clear text after sent message
     socketio.getSocket().emit("chatMessageToServer", msg);
-  }
-}
-
-class Paths {
-  clientID: string = '';
-  paths: Path[];
-
-  constructor() {
-    this.paths = [];
-    this.clientID = socketio.getName();
-  }
-
-  push(path: Path) {
-    this.paths.push(path);
-  }
-
-  getPaths() {
-    return this.paths;
-  }
-}
-
-class Path {
-  points: Point[];
-
-  constructor() {
-    this.points = [];
-  }
-
-  push(point: Point) {
-    this.points.push(point);
-  }
-
-  getPoints() {
-    return this.points;
-  }
-
-
-}
-
-class Point {
-  x: number;
-  y: number;
-  size: number;
-  color: string;
-
-  constructor(x: number, y:number, size: number, color: string) {
-    this.x = x;
-    this.y = y;
-    this.size = size;
-    this.color = color;
-  }
-
-  getValues() {
-    var vals: any = [this.x, this.y, this.size, this.color];
-    return vals;
-  }
-
-  toJSON() {
-    return {
-      x: this.x,
-      y: this.y,
-      size: this.size,
-      color: this.color
-    }
   }
 }

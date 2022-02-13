@@ -22,8 +22,18 @@
   overflow-y: auto;
 }
 
-li {
+.li-chat {
   border-bottom: 1px solid rgb(150, 150, 150);
   color: black;
 }
 
+li {
+  list-style:none;
+}
+
+li::before {
+  content: '';
+  height: 20em;
+  width: 20em;
+  background-image: url(https://i.imgur.com/34nP4GM.png);
+}

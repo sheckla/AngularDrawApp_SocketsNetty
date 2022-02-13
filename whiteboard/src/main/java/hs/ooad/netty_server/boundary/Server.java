@@ -1,10 +1,7 @@
 package hs.ooad.netty_server.boundary;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 // ctl + k -> o
@@ -21,7 +18,6 @@ import org.json.*;
 import org.springframework.stereotype.Component;
 
 import hs.ooad.whiteboard.acl.ContractWithNettyServer;
-import io.netty.util.internal.SocketUtils;
 
 @Component("contractWithNettyServer")
 public class Server implements ContractWithNettyServer {
@@ -100,7 +96,7 @@ public class Server implements ContractWithNettyServer {
 
       @Override
       public void onData(SocketIOClient client, String data, AckRequest ackSender) throws Exception {
-        String roomID = "room" + data;
+        String roomID = data;
 
         if (roomIDs.contains(roomID)) {
           client.sendEvent("createRoomFailure"); // room already exists - can't override
@@ -115,7 +111,7 @@ public class Server implements ContractWithNettyServer {
 
       @Override
       public void onData(SocketIOClient client, String data, AckRequest ackSender) throws Exception {
-        String roomID = "room" + data;
+        String roomID = data;
 
         if (!roomIDs.contains(roomID)) {
           client.sendEvent("enterRoomFailure");

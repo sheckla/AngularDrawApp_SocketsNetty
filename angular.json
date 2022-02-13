@@ -31,7 +31,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "./src/app/js/canvas.js"
+              "./src/assets/js/canvas.js"
             ]
           },
           "configurations": {
@@ -108,7 +108,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "./src/app/js/canvas.js"
+              "./src/assets/js/canvas.js"
             ]
           }
         }
