@@ -2,7 +2,6 @@
 // stop with strg + c
 
 var socket;
-var socketPaths;
 
 export function connect() {
   var eventCount = 1;
@@ -34,4 +33,8 @@ export function sendCanvasPathDataEvent(path) {
 
 export function sendChatEvent(msg) {
   socket.emit("chatEvent", msg);
+}
+
+export function getName() {
+  return socket.id;
 }

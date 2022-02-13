@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserHandlerService } from 'src/app/user-handler.service';
 import * as socketio from '../../assets/js/socketio.js';
 
 
@@ -9,17 +10,16 @@ import * as socketio from '../../assets/js/socketio.js';
 })
 export class AppComponent implements OnInit {
   title = 'socketio-angular';
-  userLoggedIn = true;
-  private socket;
+  userLoggedIn = false;
 
-  constructor(){
-    this.socket = socketio.connect();
+  constructor(private userHandlerService: UserHandlerService){
+    this.userHandlerService.resultList$.subscribe(resultList => {
+      if (resultList.length > 0) {
+        this.userLoggedIn = true;
+      }
+    });
   }
 
   ngOnInit(): void {
-  }
-
-  notifyClients() {
-    this.socket.emit("notifyClients", "notifyClients");
   }
 }

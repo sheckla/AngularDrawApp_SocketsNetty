@@ -1,18 +1,32 @@
+$('')
+
+class PathData{
+  constructor(clientID, paths) {
+    this.clientID = clientID;
+    this.paths = [];
+  }
+
+  setPaths(paths) {
+    this.paths = paths;
+  }
+}
+
+
+export var client = new PathData("0");
+var otherClients = [];
+const drawSizeIncrement = 3;
+var ctx;
+var canvas;
+
 $( document ).ready(function() {
   canvasEngine();
 });
-
-var paths = [];
-const drawSizeIncrement = 3;
 
 function canvasEngine() {
   canvas = document.getElementById("zeichenflaeche");
   ctx = canvas.getContext("2d");
   var buttons = document.getElementsByClassName('color-button');
-
-  var RedoPathsStack = [];
-  paths = [];
-
+  var clientPathsRedoStack = [];
   var isPainting = false;
   var drawSize = 10;
   var color = "black";
@@ -21,15 +35,9 @@ function canvasEngine() {
   initListeners();
   initCanvasDim();
 
-  // TODO check for better reaction-based solution / check performance
-  setInterval(function() {
-    redrawAll();
-  }, 10);
-
   function initButtons() {
     // General Buttons
     document.getElementById("resetDrawSizeButton").onclick = function() {resetDrawSize()};
-    document.getElementById("clear").onclick = function() {clearAll()};
     document.getElementById("drawSizePlusButton").onclick = function() {increaseDrawSize()};
     document.getElementById("drawSizeMinusButton").onclick = function() {decreaseDrawSize()};
     document.getElementById("undo").onclick = function() {undo()};
@@ -86,26 +94,23 @@ function canvasEngine() {
 
   function startpainting(e) {
     isPainting = true;
-    var points = [];
-    paths.push(points);
+    client.paths.push([]);
     draw(e);
   }
 
   function stopPainting() {
     isPainting = false;
-    ctx.beginPath();
   }
 
   function draw(e) {
     if(!isPainting) return;
-    ctx.strokeStyle = color;
-    paths[paths.length-1].push({
+    client.paths[client.paths.length-1].push({
       x: getMousePosX(e),
       y: getMousePosY(e),
       size: drawSize,
       color: color,
     })
-    redrawAll(e);
+    _redrawAll(e);
   }
 
   function getMousePosX(e) {
@@ -117,23 +122,16 @@ function canvasEngine() {
     return e.clientY - rect.top
   }
 
-
-  // TODO kann geloescht werden?
   function resizeCanvas(e) {
     var myCanvas = document.getElementById("zeichenflaeche");
     myCanvas.width = document.getElementById("zeichenflaeche").parentNode.parentElement.clientWidth;
-  }
-
-  function clearAll() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    paths = [];
-    RedoPathsStack = [];
   }
 
   function resetDrawSize() {
     drawSize = 10;
     updateDrawSizeDisplay();
   }
+
 
   function increaseDrawSize() {
     if (drawSize + drawSizeIncrement > 30) {
@@ -160,25 +158,26 @@ function canvasEngine() {
   }
 
   function undo() {
-    if (paths.length > 0) {
-      RedoPathsStack.push(paths.pop());
-      redrawAll();
+    if (client.paths.length > 0) {
+      clientPathsRedoStack.push(client.paths.pop());
+      _redrawAll();
     }
   }
 
   function redo() {
-    if (RedoPathsStack.length > 0) {
-      paths.push(RedoPathsStack.pop());
-      redrawAll(ctx);
+    if (clientPathsRedoStack.length > 0) {
+      client.paths.push(clientPathsRedoStack.pop());
+      _redrawAll(ctx);
     }
   }
 
   function changeColor(index) {
     var button = buttons[index];
     color = window.getComputedStyle(button).backgroundColor;
+    ctx.strokeStyle = color;
   }
 
-  https://jsfiddle.net/kgt5vzdh/
+  //https://jsfiddle.net/kgt5vzdh/
   function saveImage() {
     var w = 480;
     var h = 340;
@@ -202,45 +201,93 @@ function canvasEngine() {
     msgWindow.document.write("<img src='" + dataURL + "' alt='from canvas'/>");
   }
 
-  function redrawAll() {
-    _redrawAll(ctx, canvas, paths);
+  function _redrawAll() {
+    redrawAll();
   }
 }
 
 // --------------------------------------------------
 
-function resetPaths(newPaths) {
-  paths = newPaths;
+export function updateOtherClientPathData(newPaths, clientID) {
+  for (var i = 0; i < otherClients.length; i++) {
+    if (otherClients[i].clientID == clientID) {
+      otherClients[i].paths = newPaths;
+    }
+  }
+  redrawAll();
 }
 
-function clearPaths() {
-  paths = [];
+export function prepareOtherClientPathData(paths) {
+  var json = JSON.parse(paths);
+  var paths = json.paths;
+  var clientID = json.clientID;
+
+  var pathsArr = [];
+  for (var i = 0; i < paths.length; i++) {
+    pathsArr.push(paths[i].points);
+  }
+  updateOtherClientPathData(pathsArr, clientID);
 }
 
-function randomPaths() {
-  for (var i = 0; i < 100; i++) {
+export function clearAllPaths() {
+  client.paths = [];
+  for (var i = 0; i < otherClients.length; i++) {
+    otherClients[i].paths = [];
+  }
+  redrawAll();
+}
+
+export function clearClientPaths() {
+  client.paths = [];
+  redrawAll();
+}
+
+function redrawAll() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  redrawPaths(client.paths);
+  for (var i = 0; i < otherClients.length; i++) {
+    redrawPaths(otherClients[i].paths);
+  }
+}
+
+export function createNewClientPaths(clientID) {
+  var newClient = new PathData(clientID);
+  console.log(otherClients);
+  for (var i = 0; i < otherClients.length; i++) {
+    if (otherClients[i].clientID == clientID) return;
+  }
+
+  otherClients.push(newClient);
+}
+
+export function removeClientPaths(clientID) {
+  for (var i = 0; i < otherClients.length; i++) {
+    if (otherClients[i].clientID == clientID) {
+      otherClients.splice(i,1);
+    }
+  }
+  console.log(otherClients);
+}
+
+export function generateRandomPaths() {
+  for (var i = 0; i < 10; i++) {
     var points = [];
     points.push({
       x: rand(1000),
       y: rand(1000),
-      size: rand(90),
+      size: rand(20),
       color: "rgb(" + rand(255) +", " + rand(255) + ", " + rand(255) + ")",
     })
-    paths.push(points);
+    client.paths.push(points);
   }
-}
-
-function paths() {
-  return drawSizeIncrement;
+  redrawAll();
 }
 
 function rand(max) {
   return Math.floor(Math.random() * max);
 }
 
-function _redrawAll(ctx, canvas, paths) {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+function redrawPaths(paths) {
   for (var j = 0; j < paths.length; j++) {
     var points = paths[j];
     for (var i = 0; i < points.length; i++) {
@@ -251,12 +298,12 @@ function _redrawAll(ctx, canvas, paths) {
       ctx.fillStyle = pt.color;
       ctx.fill();
     }
-    _fillPoints(ctx, points);
+    fillPoints(ctx, points);
   }
 }
 
 // Verbindet die einzelnen Punkte von _redrawAll()
-function _fillPoints(ctx, points) {
+function fillPoints(ctx, points) {
   for (var i = 0; i < points.length-1; i++) {
     var pt1 = points[i];
     var pt2= points[i+1];
@@ -268,4 +315,3 @@ function _fillPoints(ctx, points) {
     ctx.stroke();
   }
 }
-

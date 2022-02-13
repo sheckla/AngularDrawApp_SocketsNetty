@@ -31,7 +31,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "./src/app/js/canvas.js"
+              "./src/app/js/test.js"
             ]
           },
           "configurations": {
@@ -107,7 +107,9 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./src/app/js/canvas.js"
+            ]
           }
         }
       }

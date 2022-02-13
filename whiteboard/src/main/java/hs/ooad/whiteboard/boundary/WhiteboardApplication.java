@@ -12,9 +12,7 @@ import hs.ooad.whiteboard.control.interfaces.StartServer;
 @SpringBootApplication
 @ComponentScan({"hs.ooad"})
 public class WhiteboardApplication {
-	
-	
-	
+
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(WhiteboardApplication.class, args);
 		StartServer startServer = (StartServer) ctx.getBean("startServer");
