@@ -3,7 +3,7 @@ import * as canvas from '../../../assets/js/canvas.js'
 import * as socketio from '../../../assets/js/socketio.js';
 import { interval } from 'rxjs';
 import { Point } from './Point';
-import { Paths } from './Paths';
+import { Paths } from './ClientPaths';
 import { Path } from './Path';
 
 @Component({

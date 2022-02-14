@@ -1,6 +1,13 @@
 /*  https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-scrollable.html
  */
 
+ .img {
+   width:1em;
+  filter: saturate(0%) contrast(0%) brightness(500%)
+      invert(0%) sepia(0%) hue-rotate(0deg);
+}
+
+
  hr {
   margin-top: 1rem;
   margin-bottom: 1rem;

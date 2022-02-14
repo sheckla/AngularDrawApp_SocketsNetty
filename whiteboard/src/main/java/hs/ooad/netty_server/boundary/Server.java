@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 import org.json.*;
 import org.springframework.stereotype.Component;
 
-import hs.ooad.whiteboard.acl.ContractWithNettyServer;
+import hs.ooad.acl.ContractWithNettyServer;
 
 @Component("contractWithNettyServer")
 public class Server implements ContractWithNettyServer {

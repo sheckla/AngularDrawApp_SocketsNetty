@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col text-center">
         <div *ngIf="showReturnToRegisterUI">
-          <button type="submit" class="btn btn-secondary" (click)="returnToHome()"><img src="https://i.imgur.com/rl3sk5b.png" width="20"/> Zurück zur Anmeldung</button>
+          <button type="submit" class="btn btn-secondary" (click)="returnToHome()"><img src="../../../assets/img/back.png" class="img"/> Zurück zur Anmeldung</button>
         </div>
       </div>
     </div>
@@ -19,13 +19,13 @@
       <div class="col col-sm-auto">
         <div class="row">
           <div class="col">
-            <button class="btn btn-danger" (click)="disconnect()"><img src="https://i.imgur.com/rl3sk5b.png" width="20"/> Raum verlassen</button>
+            <button class="btn btn-danger" (click)="disconnect()"><img src="../../../assets/img/back.png" class="img"/> Raum verlassen</button>
           </div>
         </div>
       </div>
 
       <div class="mt-3">
-        <button class="btn btn-secondary w-100 text-left" style="text-align: left !important" (click)="copyRoomNameToClipboard()"><img src="https://i.imgur.com/GGw3VZR.png" width="20"/> {{currentRoomText}}</button>
+        <button class="btn btn-secondary btn-lg w-100 text-left" style="text-align: left !important" (click)="copyRoomNameToClipboard()"><img class="img" src="../../../assets/img/sketching.png"/> {{currentRoomText}}</button>
       </div>
     </div>
     <h3 class="mt-3">{{otherUsersText}}</h3>
@@ -57,7 +57,7 @@
   <div id="chatDisplay">
     <ul>
       <li *ngFor = "let msg of userList" >
-        <img class="me-1" src="https://i.imgur.com/34nP4GM.png" width="20"/>{{msg}}</li>
+        <img class="me-1" src="../../../assets/img/user.png" class="img"/>{{msg}}</li>
       </ul>
     </div>
 
