@@ -10,7 +10,6 @@ export class HomeComponent {
   errorDisplayMessage = '';
 
   constructor(private userHandlerService: UserHandlerService){
-
   }
 
   registerAsGuest() {

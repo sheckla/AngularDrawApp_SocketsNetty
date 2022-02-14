@@ -1,12 +1,12 @@
 import { Path } from "./Path";
 
 export class Paths {
-  clientID: string = '';
+  clientSessionID: string = '';
   paths: Path[];
 
-  constructor(clientID: string) {
+  constructor(clientSessionID: string) {
     this.paths = [];
-    this.clientID = clientID;
+    this.clientSessionID = clientSessionID;
   }
 
   push(path: Path) {

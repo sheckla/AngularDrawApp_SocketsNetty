@@ -267,12 +267,12 @@ export function removeClientPaths(clientID) {
 }
 
 export function generateRandomPaths() {
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 500; i++) {
     var points = [];
     points.push({
-      x: rand(canvas.width),
-      y: rand(canvas.height),
-      size: rand(20),
+      x: rand(canvas.width + 100) - 20,
+      y: rand(canvas.height + 100) - 20,
+      size: rand(10),
       color: "rgb(" + rand(255) +", " + rand(255) + ", " + rand(255) + ")",
     })
     client.paths.push(points);

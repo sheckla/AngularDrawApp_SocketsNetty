@@ -66,7 +66,7 @@ export class JoinboardComponent implements OnInit {
     }
     socketio.connect();
     this.errorDisplayMessage = "";
-    this.zeichenflaeche.initConnection();
+    this.zeichenflaeche.initSocketConnection();
 
     // Set Room-ID Text in HTML
     socketio.getSocket().on("enterRoomSuccessfull", (data) => {
@@ -117,7 +117,7 @@ export class JoinboardComponent implements OnInit {
 
   disconnect() {
     socketio.getSocket().emit("leaveRoom");
-    this.zeichenflaeche.closeConnection();
+    this.zeichenflaeche.closeSocketConnection();
     this.userConnected = false;
     this.showReturnToRegisterUI = true;
     this.errorDisplayMessage = '';
@@ -135,6 +135,7 @@ export class JoinboardComponent implements OnInit {
     this.initConnection();
     socketio.getSocket().emit("enterRoom", this.roomName); // request Room-ID from Server
     socketio.getSocket().emit("requestRoomClientsIDs");
+    this.sendMessage(" ist dem Raum beigetreten");
   }
 
   startRoom() {
@@ -144,7 +145,7 @@ export class JoinboardComponent implements OnInit {
     }
     this.initConnection();
     socketio.getSocket().emit("createRoom", this.roomName);
-    this.sendMessage("ich habe einen Raum erstellt :^)");
+    this.sendMessage("hat einen Raum erstellt :^)");
   }
 
   sendMessage(msg: string) {

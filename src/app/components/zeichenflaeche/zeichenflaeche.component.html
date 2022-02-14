@@ -7,9 +7,9 @@
     <div class="col col-sm-auto">
       <div class="row">
         <div class="col">
-          <button type="button" class="btn btn-secondary " (click)="clearAllPaths()"> Session Zurücksetzen </button>
-          <button type="button" class="btn btn-secondary m-2" (click)="randomDots()"> Konfetti </button>
-          <button type="button" class="btn btn-secondary" (click)="printPath()"> printPath </button>
+          <button type="button" class="btn btn-secondary " (click)="buttonClearSessionCanvas()"> Session Zurücksetzen </button>
+          <button type="button" class="btn btn-secondary m-2" (click)="buttonGenerateConfetti()"> Konfetti </button>
+          <button type="button" class="btn btn-secondary" (click)="buttonPrintPathToConsole()"> printPath </button>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="col">
       <div class="row">
         <div class="col">
-          <button id="clear" type="button" class="btn btn-danger" (click)="clearClientCanvas()">Abwischen</button>
+          <button id="clear" type="button" class="btn btn-danger" (click)="buttonClearClientCanvas()">Abwischen</button>
         </div>
       </div>
     </div>

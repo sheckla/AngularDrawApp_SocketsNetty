@@ -14,8 +14,7 @@ import { Path } from './Path';
 
 
 export class ZeichenflaecheComponent implements OnInit {
-  paths;
-  previousPaths: any[] = [];
+  previousClientCanvasStates: any[] = [];
 
   ngOnInit(): void {
   }
@@ -23,7 +22,7 @@ export class ZeichenflaecheComponent implements OnInit {
   constructor() {
   }
 
-  initConnection() {
+  initSocketConnection() {
     socketio.getSocket().on("sendCanvasPathDataToClient", (data) => {
       canvas.prepareOtherClientPathData(data);
     })
@@ -47,33 +46,33 @@ export class ZeichenflaecheComponent implements OnInit {
 
     const sourceInterval = interval(1);
     const sendPathsIntervallEvent = sourceInterval.subscribe(() => {
-      this.sendPaths();
+      this.checkIfCanvasChanged();
     });
   }
 
-  closeConnection() {
+  closeSocketConnection() {
     socketio.getSocket().disconnect();
     canvas.clearClientPaths();
   }
 
-  sendPaths() {
+  private checkIfCanvasChanged() {
     if (!socketio.getSocket()) return;
 
-    this.paths = canvas.client.paths;
-    this.previousPaths.push(JSON.parse(JSON.stringify(this.paths)));
-    if (this.previousPaths.length > 5) this.previousPaths.shift();
+    var paths = canvas.client.paths;
+    this.previousClientCanvasStates.push(JSON.parse(JSON.stringify(paths)));
+    if (this.previousClientCanvasStates.length > 5) this.previousClientCanvasStates.shift();
 
-    if (JSON.stringify(this.paths) == JSON.stringify(this.previousPaths[this.previousPaths.length-2])) return;
+    if (JSON.stringify(paths) == JSON.stringify(this.previousClientCanvasStates[this.previousClientCanvasStates.length-2])) return;
 
-    this.emitPaths();
+    this.sendPathsToServer();
   }
 
-  emitPaths() {
-    this.paths = canvas.client.paths;
+  private sendPathsToServer() {
+    var paths = canvas.client.paths;
     var _paths: Paths = new Paths(socketio.getName());
-    for (var i = 0; i < this.paths.length; i++) {
+    for (var i = 0; i < paths.length; i++) {
       var _path: Path = new Path();
-      var points = this.paths[i];
+      var points = paths[i];
       for (var j = 0; j < points.length; j++) {
         var p = points[j];
         var point: Point = new Point(p.x, p.y, p.size, p.color);
@@ -85,30 +84,25 @@ export class ZeichenflaecheComponent implements OnInit {
     socketio.getSocket().emit("sendCanvasPathDataToServer", JSON.stringify(_paths));
   }
 
-  // Buttons
-  clearClientCanvas() {
+  // -------- Buttons --------
+  buttonClearClientCanvas() {
     canvas.clearClientPaths();
-    this.sendPaths;
+    this.checkIfCanvasChanged;
   }
 
-  randomDots() {
+  buttonGenerateConfetti() {
     canvas.generateRandomPaths();
-    this.sendPaths();
+    this.checkIfCanvasChanged();
   }
 
-  clearAllPaths() {
+  buttonClearSessionCanvas() {
     if (socketio.getSocket()) {
       socketio.getSocket().emit("resetPathsRequestfromClient");
     }
   }
 
-  printPath() {
-    this.paths = canvas.client.paths;
-    console.log(this.paths);
-  }
-
-  sendMessage(msg: string) {
-    // TODO clear text after sent message
-    socketio.getSocket().emit("chatMessageToServer", msg);
+  buttonPrintPathToConsole() {
+    var paths = canvas.client.paths;
+    console.log(paths);
   }
 }

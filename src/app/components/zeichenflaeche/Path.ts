@@ -14,6 +14,4 @@ export class Path {
   getPoints() {
     return this.points;
   }
-
-
 }
