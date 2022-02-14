@@ -1,27 +1,15 @@
+
 <div class="container pt-1 pb-1">
-  <div class="row ">
+  <div class="row">
     <div class="col">
-      <!-- ELEMENT 1 -->
-      <div class="row">
-        <div class="col">
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <!-- ELEMENT 1 -->
-      <div class="row">
-        <div class="col">
-        </div>
-      </div>
+      <button id="saveImageButton" type="button" class="btn btn-success text-nowrap mt-2">Bild Speichern</button>
     </div>
     <div class="col col-sm-auto">
-      <!-- ELEMENT 3 -->
       <div class="row">
         <div class="col">
-          Testing Tools:
-          <button type="button" class="btn btn-secondary me-1" (click)="clearAllPaths()"> Session Zurücksetzen </button>
-        <button type="button" class="btn btn-secondary me-1" (click)="randomDots()"> randomDots </button>
-        <button type="button" class="btn btn-secondary" (click)="printPath()"> print path to console </button>
+          <button type="button" class="btn btn-secondary " (click)="clearAllPaths()"> Session Zurücksetzen </button>
+          <button type="button" class="btn btn-secondary m-2" (click)="randomDots()"> Konfetti </button>
+          <button type="button" class="btn btn-secondary" (click)="printPath()"> printPath </button>
         </div>
       </div>
     </div>
@@ -29,9 +17,9 @@
   </div>
 </div>
 
-<div class="container pt-1 pb-1 ">
+<div class="container pt-1 pb-1 h-auto ">
   <div class="row w-100">
-    <div id="widthForCanvas" class="col">
+    <div id="widthForCanvas" style="height: 22em">
       <canvas id="zeichenflaeche" class="bg-white " ></canvas>
       <script type="module" src="../../../assets/js/canvas.js"></script>
     </div>
@@ -41,42 +29,21 @@
 <div class="container pt-1 pb-1">
   <div class="row ">
     <div class="col">
-      <!-- ELEMENT 1 -->
       <div class="row">
         <div class="col">
-          <button id="clear" type="button" class="btn btn-primary" (click)="clearClientCanvas()">Zurücksetzen</button>
+          <button id="clear" type="button" class="btn btn-danger" (click)="clearClientCanvas()">Abwischen</button>
         </div>
       </div>
     </div>
-    <div class="col">
-      <!-- ELEMENT 1 -->
-      <div class="row">
-        <div class="col">
-          <button id="saveImageButton" type="button" class="btn btn-primary float-end me-5">Bild Speichern</button>
-        </div>
-      </div>
-    </div>
+
     <div class="col col-sm-auto">
-      <!-- ELEMENT 3 -->
       <div class="row">
         <div class="col">
-          <button id="undo" type="button" class="btn btn-primary">Undo</button>
-          <button id="redo" type="button" class="btn btn-primary float-end ms-2">Redo</button>
+          <button id="undo" type="button" class="btn btn-secondary">Undo</button>
+          <button id="redo" type="button" class="btn btn-secondary float-end ms-2">Redo</button>
         </div>
       </div>
     </div>
 
   </div>
 </div>
-
-<!-- Example for Angular button input parameter and output via .ts -->
-<!-- <div id="chatDisplay">
-  <ul>
-    <li *ngFor = "let msg of messages">{{msg}}</li>
-  </ul>
-</div>
-<div id="chatInput">
-  <input type="text" id="chatBox" #chatMessage>
-  <button (click)="sendMessage(chatMessage.value)">Send Message</button>
-</div>
--->

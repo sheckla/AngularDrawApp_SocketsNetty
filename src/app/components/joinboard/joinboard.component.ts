@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { UserHandlerService } from 'src/app/services/user-handler.service';
 import * as socketio from '../../../assets/js/socketio';
 import { ZeichenflaecheComponent } from '../zeichenflaeche/zeichenflaeche.component';
+import * as chatScrollHandler from './chatScrollHandler.js'
 
 @Component({
   providers:[ZeichenflaecheComponent],
@@ -142,12 +143,24 @@ export class JoinboardComponent implements OnInit {
     }
     this.initConnection();
     socketio.getSocket().emit("createRoom", this.roomName);
-    this.sendMessage("hat einen Raum erstellt!");
+    this.sendMessage("ich habe einen Raum erstellt :^)");
   }
 
   sendMessage(msg: string) {
     if (msg.length == 0) return;
 
-    socketio.getSocket().emit("chatMessageToServer", this.userName + ": " + msg);
+    var today = new Date();
+    var time = this.prefixNumberWithZero(today.getHours()) + ":" + this.prefixNumberWithZero(today.getMinutes());
+
+    socketio.getSocket().emit("chatMessageToServer","[ " + time + " ]  " + this.userName + ": " + msg);
+    chatScrollHandler.scrollToBottomOf_li();
+  }
+
+  private prefixNumberWithZero(number) {
+    var s = number.toString();
+    for (var i = 0; i < 2 - s.length; i++) {
+        s = '0' + number;
+    }
+    return s;
   }
 }

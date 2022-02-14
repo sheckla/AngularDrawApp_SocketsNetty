@@ -108,7 +108,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "./src/assets/js/canvas.js"
+              "./src/app/js/canvas.js"
             ]
           }
         }

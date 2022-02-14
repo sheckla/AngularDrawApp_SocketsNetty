@@ -84,7 +84,7 @@ function canvasEngine() {
 
   function initCanvasDim() {
     canvas.width = document.getElementById("zeichenflaeche").parentNode.parentElement.clientWidth;
-    canvas.height = 600;
+    canvas.height = document.getElementById("zeichenflaeche").parentNode.parentElement.clientHeight;
   }
 
   function mouseLeftCanvas(e) {
@@ -186,13 +186,13 @@ function canvasEngine() {
       h = screen.availHeight;
     }
 
-    var popW = document.getElementById("zeichenflaeche").parentNode.parentElement.clientWidth + 75;
-    var popH = 600 + 75;
+    var popW = document.getElementById("zeichenflaeche").parentNode.parentElement.clientWidth + 8;
+    var popH = 600 + 16;
 
     var leftPos = (w - popW) / 2;
     var topPos = (h - popH) / 2;
 
-    msgWindow = window.open('', 'Image', 'width=' + popW + ',height=' + popH +
+    var msgWindow = window.open('', 'Image', 'width=' + popW + ',height=' + popH +
     ',top=' + topPos + ',left=' + leftPos + ',       scrollbars=yes, resizeable=no');
 
     var canvas = document.getElementById("zeichenflaeche");
@@ -267,11 +267,11 @@ export function removeClientPaths(clientID) {
 }
 
 export function generateRandomPaths() {
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 1000; i++) {
     var points = [];
     points.push({
-      x: rand(1000),
-      y: rand(1000),
+      x: rand(canvas.width),
+      y: rand(canvas.height),
       size: rand(20),
       color: "rgb(" + rand(255) +", " + rand(255) + ", " + rand(255) + ")",
     })

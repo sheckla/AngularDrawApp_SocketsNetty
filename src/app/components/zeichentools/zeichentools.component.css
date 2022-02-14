@@ -2,12 +2,11 @@ color-1 {
   background-color: #8064A2 !important;
 }
 
+.color-button {
+  border: 0px;
+  padding: 2%;
+}
+
 .btn-secondary {
   color:transparent;
 }
-
-color-button {
-
-}
-
-
