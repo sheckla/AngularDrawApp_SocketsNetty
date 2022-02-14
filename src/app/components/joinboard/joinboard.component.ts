@@ -107,6 +107,7 @@ export class JoinboardComponent implements OnInit {
 
     socketio.getSocket().on("chatMessageToClient", (data) => {
       this.messages.push(data);
+      chatScrollHandler.scrollToBottomOf_li();
     })
   }
 
@@ -151,15 +152,13 @@ export class JoinboardComponent implements OnInit {
 
     var today = new Date();
     var time = this.prefixNumberWithZero(today.getHours()) + ":" + this.prefixNumberWithZero(today.getMinutes());
-
     socketio.getSocket().emit("chatMessageToServer","[ " + time + " ]  " + this.userName + ": " + msg);
-    chatScrollHandler.scrollToBottomOf_li();
   }
 
   private prefixNumberWithZero(number) {
     var s = number.toString();
     for (var i = 0; i < 2 - s.length; i++) {
-        s = '0' + number;
+      s = '0' + number;
     }
     return s;
   }
