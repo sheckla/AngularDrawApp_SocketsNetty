@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as canvas from '../../../assets/js/canvas.js'
 import * as socketio from '../../../assets/js/socketio.js';
 import { interval } from 'rxjs';
-import { Point } from './Point';
-import { Paths } from './ClientPaths';
-import { Path } from './Path';
+import { Point } from './data/Point';
+import { Paths } from './data/ClientPaths';
+import { Path } from './data/Path';
 
 @Component({
   selector: 'app-drawboard',
