@@ -7,20 +7,20 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSliderModule } from '@angular/material/slider';
-import { ZeichenflaecheComponent } from './components/zeichenflaeche/zeichenflaeche.component';
+import { DrawboardComponent } from './components/drawboard/drawboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { ZeichentoolsComponent } from './components/zeichentools/zeichentools.component';
+import { DrawtoolsComponent } from './components/drawtools/drawtools.component';
 import { JoinboardComponent } from './components/joinboard/joinboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ZeichenflaecheComponent,
+    DrawboardComponent,
     NavbarComponent,
     HomeComponent,
-    ZeichentoolsComponent,
+    DrawtoolsComponent,
     JoinboardComponent,
   ],
   imports: [

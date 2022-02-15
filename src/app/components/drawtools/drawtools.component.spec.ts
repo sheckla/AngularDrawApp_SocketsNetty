@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ZeichentoolsComponent } from './zeichentools.component';
+import { DrawtoolsComponent} from './drawtools.component';
 
 describe('ZeichentoolsComponent', () => {
-  let component: ZeichentoolsComponent;
-  let fixture: ComponentFixture<ZeichentoolsComponent>;
+  let component: DrawtoolsComponent;
+  let fixture: ComponentFixture<DrawtoolsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ZeichentoolsComponent ]
+      declarations: [ DrawtoolsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ZeichentoolsComponent);
+    fixture = TestBed.createComponent(DrawtoolsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,5 +22,5 @@ describe('ZeichentoolsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
+
 });

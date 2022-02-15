@@ -7,13 +7,13 @@ import { Paths } from './ClientPaths';
 import { Path } from './Path';
 
 @Component({
-  selector: 'app-zeichenflaeche',
-  templateUrl: './zeichenflaeche.component.html',
-  styleUrls: ['./zeichenflaeche.component.css']
+  selector: 'app-drawboard',
+  templateUrl: './drawboard.component.html',
+  styleUrls: ['./drawboard.component.css']
 })
 
 
-export class ZeichenflaecheComponent implements OnInit {
+export class DrawboardComponent implements OnInit {
   previousClientCanvasStates: any[] = [];
 
   ngOnInit(): void {

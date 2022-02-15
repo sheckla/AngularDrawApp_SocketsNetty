@@ -1,11 +1,11 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { UserHandlerService } from 'src/app/services/user-handler.service';
 import * as socketio from '../../../assets/js/socketio';
-import { ZeichenflaecheComponent } from '../zeichenflaeche/zeichenflaeche.component';
+import { DrawboardComponent } from '../drawboard/drawboard.component';
 import * as chatScrollHandler from './chatScrollHandler.js'
 
 @Component({
-  providers:[ZeichenflaecheComponent],
+  providers:[DrawboardComponent],
   selector: 'app-joinboard',
   templateUrl: './joinboard.component.html',
   styleUrls: ['./joinboard.component.css']
@@ -22,7 +22,7 @@ export class JoinboardComponent implements OnInit {
   HTMLUserListArray: string[] = [];
   HTMLChatMessagesArray: string[] = [];
 
-  constructor(private userHandlerService: UserHandlerService, private zeichenflaeche: ZeichenflaecheComponent) {
+  constructor(private userHandlerService: UserHandlerService, private zeichenflaeche: DrawboardComponent) {
     this.subcribeToUserHandlerService();
   }
 
