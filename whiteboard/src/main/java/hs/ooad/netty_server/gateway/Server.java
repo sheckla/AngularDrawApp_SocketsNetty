@@ -66,6 +66,7 @@ public class Server implements ContractWithNettyServer {
         server.getBroadcastOperations().sendEvent("clientDisconnected", client.getSessionId());
       }
     });
+    
 
     server.addEventListener("sendCanvasPathDataToServer", String.class, new DataListener<String>() {
 
