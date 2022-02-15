@@ -11,6 +11,5 @@ export class UserHandlerService {
   updateClientName(updatedClientName) {
     this.clientName.next(updatedClientName);
   }
-
   constructor() { }
 }

@@ -34,7 +34,7 @@ export class ZeichenflaecheComponent implements OnInit {
     socketio.getSocket().on("sendRoomClientsIDs", (clients) =>{
       var json = JSON.parse(clients);
       for (var i = 0; i < json.length; i++) {
-        if (socketio.getName() != json[i]) {
+        if (socketio.getId() != json[i]) {
           canvas.createNewClientPaths(json[i]);
         }
       }
@@ -55,6 +55,26 @@ export class ZeichenflaecheComponent implements OnInit {
     canvas.clearClientPaths();
   }
 
+  // -------- Buttons --------
+  buttonClearClientCanvas() {
+    canvas.clearClientPaths();
+    this.checkIfCanvasChanged;
+  }
+
+  buttonGenerateConfetti() {
+    canvas.generateRandomPaths();
+    this.checkIfCanvasChanged();
+  }
+
+  buttonClearSessionCanvas() {
+    socketio.emit_resetPathsRequestFromClient();
+  }
+
+  buttonPrintPathToConsole() {
+    var paths = canvas.client.paths;
+    console.log(paths);
+  }
+
   private checkIfCanvasChanged() {
     if (!socketio.getSocket()) return;
 
@@ -69,7 +89,7 @@ export class ZeichenflaecheComponent implements OnInit {
 
   private sendPathsToServer() {
     var paths = canvas.client.paths;
-    var _paths: Paths = new Paths(socketio.getName());
+    var _paths: Paths = new Paths(socketio.getId());
     for (var i = 0; i < paths.length; i++) {
       var _path: Path = new Path();
       var points = paths[i];
@@ -81,28 +101,6 @@ export class ZeichenflaecheComponent implements OnInit {
       _paths.push(_path);
     }
 
-    socketio.getSocket().emit("sendCanvasPathDataToServer", JSON.stringify(_paths));
-  }
-
-  // -------- Buttons --------
-  buttonClearClientCanvas() {
-    canvas.clearClientPaths();
-    this.checkIfCanvasChanged;
-  }
-
-  buttonGenerateConfetti() {
-    canvas.generateRandomPaths();
-    this.checkIfCanvasChanged();
-  }
-
-  buttonClearSessionCanvas() {
-    if (socketio.getSocket()) {
-      socketio.getSocket().emit("resetPathsRequestfromClient");
-    }
-  }
-
-  buttonPrintPathToConsole() {
-    var paths = canvas.client.paths;
-    console.log(paths);
+    socketio.emit_sendCanvasPathDataToServer(JSON.stringify(_paths));
   }
 }

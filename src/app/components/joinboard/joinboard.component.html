@@ -8,22 +8,22 @@
     <div class="row">
       <div class="col text-center">
         <div *ngIf="showReturnToRegisterUI">
-          <button type="submit" class="btn btn-secondary" (click)="returnToHome()"><img src="../../../assets/img/back.png" class="img"/> Zurück zur Anmeldung</button>
+          <button type="submit" class="btn btn-secondary" (click)="returnToHomeComponent()"><img src="../../../assets/img/back.png" class="img"/> Zurück zur Anmeldung</button>
         </div>
       </div>
     </div>
 
     <hr/>
 
-    <div *ngIf="userConnected; else elseBlock">
+    <div *ngIf="userIsConnected; else elseBlock">
       <div class="mt-3">
         <div class="input-group">
-          <button class="btn btn-secondary form-control" style="text-align: left !important" (click)="copyRoomNameToClipboard()"><img class="img" src="../../../assets/img/sketching.png"/> {{currentRoomText}}</button>
-          <button class="btn btn-danger" (click)="disconnect()"><img src="../../../assets/img/back.png" class="img"/> Raum verlassen</button>
+          <button class="btn btn-secondary form-control" style="text-align: left !important" (click)="copyRoomNameToClipboard()"><img class="img" src="../../../assets/img/sketching.png"/> {{HTMLRoomText}}</button>
+          <button class="btn btn-danger" (click)="disconnectFromRoom()"><img src="../../../assets/img/back.png" class="img"/> Raum verlassen</button>
         </div>
       </div>
     </div>
-    <h3 class="mt-3">{{otherUsersText}}</h3>
+    <h3 class="mt-3">{{HTMLOtherUsersText}}</h3>
   </div>
   <ng-template #elseBlock>
     <form>
@@ -32,15 +32,15 @@
         <div>
           <div class="input-group">
             <input type="text" class="form-control" id="boardcode" placeholder="Sturmwind-Zeichnerclub" #roomNameInput
-            (input)="onRoomNameChange(roomNameInput.value)" value="{{roomName}}">
-            <button class="btn btn-secondary float-end" (click)="generateCode()">Generieren</button>
+            (input)="inputFieldRoomName_onChangeValue(roomNameInput.value)" value="{{roomName}}">
+            <button class="btn btn-secondary float-end" (click)="buttonGenerateRoomName()">Generieren</button>
           </div>
           <div id="nameInputHelp" class="form-text">Wähle den Namen des Raums, welchem du beitreten oder erstellen möchtest</div>
         </div>
       </div>
         <div class="row mt-3">
           <div class="col">
-            <button class="btn btn-success w-100" (click)="startRoom()"> Raum erstellen</button>
+            <button class="btn btn-success w-100" (click)="createRoom()"> Raum erstellen</button>
           </div>
           <div class="col">
             <button class="btn btn-success float-end ms-2 w-100" (click)="enterRoom()"> Raum beitreten</button>
@@ -51,22 +51,22 @@
 
   <div id="chatDisplay">
     <ul>
-      <li *ngFor = "let msg of userList" >
+      <li *ngFor = "let msg of HTMLUserListArray" >
         <img src="../../../assets/img/user.png" class="img"/> {{msg}}</li>
       </ul>
     </div>
 
-    <div (keyup.enter)="sendMessage(chatMessage.value);chatMessage.value = ''" *ngIf="userConnected; else chatElseBlock">
+    <div (keyup.enter)="sendMessageToServer(chatMessage.value);chatMessage.value = ''" *ngIf="userIsConnected; else chatElseBlock">
       <!-- https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-scrollable.html -->
       <div>
         <ul class="rounded mb-2 bg-dark"id="ss_elem_list" tabindex="0" role="listbox" aria-labelledby="ss_elem">
-          <li class="li-chat m-1" tabindex="1" *ngFor = "let msg of messages">{{msg}}</li>
+          <li class="li-chat m-1" tabindex="1" *ngFor = "let msg of HTMLChatMessagesArray">{{msg}}</li>
         </ul>
       </div>
       <div>
         <div class="input-group">
           <input class="form-control" type="text" id="chatBox" #chatMessage>
-          <button class="btn btn-success float-end" (click)="sendMessage(chatMessage.value);chatMessage.value = ''">Senden</button>
+          <button class="btn btn-success float-end" (click)="sendMessageToServer(chatMessage.value);chatMessage.value = ''">Senden</button>
         </div>
       </div>
     </div>
@@ -77,6 +77,6 @@
     </ng-template>
 
     <div class="text-center mt-3">
-      {{errorDisplayMessage}}
+      {{HTMLdebugDisplayMessage}}
     </div>
   </div>

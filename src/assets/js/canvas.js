@@ -206,6 +206,17 @@ function canvasEngine() {
 }
 
 // --------------------------------------------------
+export function prepareOtherClientPathData(paths) {
+  var json = JSON.parse(paths);
+  var paths = json.paths;
+  var clientID = json.clientSessionID;
+
+  var pathsArr = [];
+  for (var i = 0; i < paths.length; i++) {
+    pathsArr.push(paths[i].points);
+  }
+  updateOtherClientPathData(pathsArr, clientID);
+}
 
 export function updateOtherClientPathData(newPaths, clientID) {
   for (var i = 0; i < otherClients.length; i++) {
@@ -214,18 +225,6 @@ export function updateOtherClientPathData(newPaths, clientID) {
     }
   }
   redrawAll();
-}
-
-export function prepareOtherClientPathData(paths) {
-  var json = JSON.parse(paths);
-  var paths = json.paths;
-  var clientID = json.clientID;
-
-  var pathsArr = [];
-  for (var i = 0; i < paths.length; i++) {
-    pathsArr.push(paths[i].points);
-  }
-  updateOtherClientPathData(pathsArr, clientID);
 }
 
 export function clearAllPaths() {
@@ -256,6 +255,7 @@ export function createNewClientPaths(clientID) {
   }
 
   otherClients.push(newClient);
+  console.log(otherClients);
 }
 
 export function removeClientPaths(clientID) {
@@ -264,6 +264,7 @@ export function removeClientPaths(clientID) {
       otherClients.splice(i,1);
     }
   }
+  redrawAll();
 }
 
 export function generateRandomPaths() {

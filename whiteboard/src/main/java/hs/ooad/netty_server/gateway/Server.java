@@ -1,4 +1,4 @@
-package hs.ooad.netty_server.boundary;
+package hs.ooad.netty_server.gateway;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -17,7 +17,8 @@ import com.google.gson.Gson;
 import org.json.*;
 import org.springframework.stereotype.Component;
 
-import hs.ooad.acl.ContractWithNettyServer;
+import hs.ooad.netty_server.gateway.listener.AddListener_OnConnect;
+import hs.ooad.whiteboard.acl.ContractWithNettyServer;
 
 @Component("contractWithNettyServer")
 public class Server implements ContractWithNettyServer {
@@ -45,13 +46,17 @@ public class Server implements ContractWithNettyServer {
     this.config.setPort(9092);
     this.server = new SocketIOServer(this.config);
 
-    this.server.addConnectListener(new ConnectListener() {
+    AddListenerManager addListenerToServer = new AddListenerManager();
+    addListenerToServer.add(new AddListener_OnConnect());
+    addListenerToServer.addToServer(server);
+
+    /* this.server.addConnectListener(new ConnectListener() {
 
       @Override
       public void onConnect(SocketIOClient client) {
         System.out.println("ClientID: " + client.getSessionId() + " is connected!");
       }
-    });
+    }); */
 
     this.server.addDisconnectListener(new DisconnectListener() {
 

@@ -12,17 +12,27 @@ import * as chatScrollHandler from './chatScrollHandler.js'
 })
 export class JoinboardComponent implements OnInit {
   roomName: String = '';
-  currentRoomText : String = '';
-  otherUsersText: string = '';
-  errorDisplayMessage = "";
   userName : String = '';
-  userList: string[] = [];
-  messages: string[] = [];
-  userConnected = false;
+  userIsConnected = false;
   showReturnToRegisterUI = false;
+
+  HTMLRoomText : String = '';
+  HTMLOtherUsersText: string = '';
+  HTMLdebugDisplayMessage = "";
+  HTMLUserListArray: string[] = [];
+  HTMLChatMessagesArray: string[] = [];
 
   constructor(private userHandlerService: UserHandlerService, private zeichenflaeche: ZeichenflaecheComponent) {
     this.subcribeToUserHandlerService();
+  }
+
+  ngOnInit(): void {
+  }
+
+  // Called upon then reloading/closing the Website
+  @HostListener('window:beforeunload', ['$event'])
+  async onBeforeUnload(): Promise<void> {
+    socketio.emit_leaveRoom();
   }
 
   subcribeToUserHandlerService() {
@@ -32,10 +42,7 @@ export class JoinboardComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
-
-  generateCode() {
+  buttonGenerateRoomName() {
     var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     var code = '';
     for(var i = 0; i < 9; i++) {
@@ -45,115 +52,108 @@ export class JoinboardComponent implements OnInit {
     this.copyRoomNameToClipboard();
   }
 
-  onRoomNameChange(newRoomName) {
+  inputFieldRoomName_onChangeValue(newRoomName) {
     this.roomName = newRoomName;
   }
 
   copyRoomNameToClipboard() {
     navigator.clipboard.writeText(this.roomName.toString());
-    this.errorDisplayMessage = "Raumname \"" + this.roomName + "\" wurde in die Zwischenablage kopiert.";
+    this.HTMLdebugDisplayMessage = "Raumname \"" + this.roomName + "\" wurde in die Zwischenablage kopiert.";
   }
 
-  // Called upon then reloading/closing the Website
-  @HostListener('window:beforeunload', ['$event'])
-  async onBeforeUnload(): Promise<void> {
-    socketio.getSocket().emit("leaveRoom");
-  }
-
-  initConnection() {
-    if (socketio.getSocket()) {
-      socketio.getSocket().disconnect();
-    }
-    socketio.connect();
-    this.errorDisplayMessage = "";
-    this.zeichenflaeche.initSocketConnection();
-
-    // Set Room-ID Text in HTML
-    socketio.getSocket().on("enterRoomSuccessfull", (data) => {
-      this.currentRoomText = "Raum \"" + data + "\"";
-      this.userConnected = true;
-      this.showReturnToRegisterUI = false;
-      this.userList = [];
-      this.otherUsersText = "Andere Nutzer in der Session:";
-      socketio.getSocket().emit("requestRoomClientsNames");
-    })
-
-    socketio.getSocket().on("enterRoomFailure", () => {
-      console.log("Raum nicht vorhanden!");
-      this.disconnect();
-      this.errorDisplayMessage = "Der Raum ist nicht vorhanden.";
-    })
-
-    socketio.getSocket().on("createRoomFailure", () => {
-      console.log("Raum schon vorhanden!");
-      this.disconnect();
-      this.errorDisplayMessage = "Der Raum existiert schon. Wähle anderen Raumcode";
-    })
-
-    socketio.getSocket().on("requestRoomClientsNamesFromServer", () =>{
-      socketio.getSocket().emit("sendClientNameToServer", this.userName);
-    });
-
-    socketio.getSocket().on("sendClientNameToClients", (clientName) =>{
-      if (clientName && clientName != this.userName && !this.userList.includes(clientName)) {
-        this.userList.push(clientName);
-      }
-    });
-
-    socketio.getSocket().on("clientDisconnected", () => {
-      this.userList = [];
-      socketio.getSocket().emit("requestRoomClientsNames");
-    })
-
-    socketio.getSocket().on("chatMessageToClient", (data) => {
-      this.messages.push(data);
-      chatScrollHandler.scrollToBottomOf_li();
-    })
-  }
-
-  returnToHome() {
+  returnToHomeComponent() {
     this.userHandlerService.updateClientName("");
-  }
-
-  disconnect() {
-    socketio.getSocket().emit("leaveRoom");
-    this.zeichenflaeche.closeSocketConnection();
-    this.userConnected = false;
-    this.showReturnToRegisterUI = true;
-    this.errorDisplayMessage = '';
-    this.otherUsersText = '';
-    this.currentRoomText = '';
-    this.userList = [];
-    this.messages = [];
+    // if clientName is empty, the sign-up UI will be displayed
   }
 
   enterRoom() {
     if (!this.roomName) {
-      this.errorDisplayMessage = "Kein Raum-Name eingegeben";
+      this.HTMLdebugDisplayMessage = "Kein Raum-Name eingegeben";
       return;
     }
-    this.initConnection();
-    socketio.getSocket().emit("enterRoom", this.roomName); // request Room-ID from Server
-    socketio.getSocket().emit("requestRoomClientsIDs");
-    this.sendMessage(" ist dem Raum beigetreten");
+    this.initSocketConnection();
+    socketio.emit_enterRoom(this.roomName); // request Room-ID from Server
+    socketio.emit_requestRoomClientsNames();
+    this.sendMessageToServer(" ist dem Raum beigetreten");
   }
 
-  startRoom() {
+  disconnectFromRoom() {
+    socketio.emit_leaveRoom();
+    this.zeichenflaeche.closeSocketConnection();
+    this.userIsConnected = false;
+    this.showReturnToRegisterUI = true;
+    this.HTMLdebugDisplayMessage = '';
+    this.HTMLOtherUsersText = '';
+    this.HTMLRoomText = '';
+    this.HTMLUserListArray = [];
+    this.HTMLChatMessagesArray = [];
+  }
+
+  createRoom() {
     if (!this.roomName) {
-      this.errorDisplayMessage = "Kein Raum-Name eingegeben";
+      this.HTMLdebugDisplayMessage = "Kein Raum-Name eingegeben";
       return;
     }
-    this.initConnection();
-    socketio.getSocket().emit("createRoom", this.roomName);
-    this.sendMessage("hat einen Raum erstellt :^)");
+    this.initSocketConnection();
+    socketio.emit_createRoom(this.roomName);
+    this.sendMessageToServer("hat einen Raum erstellt :^)");
   }
 
-  sendMessage(msg: string) {
+  sendMessageToServer(msg: string) {
     if (msg.length == 0) return;
 
     var today = new Date();
     var time = this.prefixNumberWithZero(today.getHours()) + ":" + this.prefixNumberWithZero(today.getMinutes());
-    socketio.getSocket().emit("chatMessageToServer","[ " + time + " ]  " + this.userName + ": " + msg);
+    socketio.emit_chatMessageToServer("[ " + time + " ]  " + this.userName + ": " + msg)
+  }
+
+  private initSocketConnection() {
+    socketio.disconnect();
+    socketio.connect();
+    this.HTMLdebugDisplayMessage = "";
+    this.zeichenflaeche.initSocketConnection();
+
+    // Set Room-ID Text in HTML
+    socketio.getSocket().on("enterRoomSuccessfull", (data) => {
+      this.HTMLRoomText = "Raum \"" + data + "\"";
+      this.userIsConnected = true;
+      this.showReturnToRegisterUI = false;
+      this.HTMLUserListArray = [];
+      this.HTMLOtherUsersText = "Andere Nutzer in der Session:";
+      socketio.emit_requestRoomClientsNames();
+      socketio.emit_requestRoomClientsIDs();
+    })
+
+    socketio.getSocket().on("enterRoomFailure", () => {
+      this.disconnectFromRoom();
+      this.HTMLdebugDisplayMessage = "Der Raum ist nicht vorhanden.";
+    })
+
+    socketio.getSocket().on("createRoomFailure", () => {
+      this.disconnectFromRoom();
+      this.HTMLdebugDisplayMessage = "Der Raum existiert schon. Wähle anderen Raumcode";
+    })
+
+    socketio.getSocket().on("requestRoomClientsNamesFromServer", () =>{
+      socketio.emit_sendClientNameToServer(this.userName);
+    });
+
+    socketio.getSocket().on("sendClientNameToClients", (clientName) =>{
+      if (clientName && clientName != this.userName && !this.HTMLUserListArray.includes(clientName)) {
+        this.HTMLUserListArray.push(clientName);
+      }
+    });
+
+    socketio.getSocket().on("clientDisconnected", () => {
+      this.HTMLUserListArray = [];
+      socketio.emit_requestRoomClientsNames();
+      socketio.emit_requestRoomClientsIDs();
+    })
+
+    socketio.getSocket().on("chatMessageToClient", (data) => {
+      this.HTMLChatMessagesArray.push(data);
+      chatScrollHandler.scrollToBottomOf_li();
+    })
   }
 
   private prefixNumberWithZero(number) {
