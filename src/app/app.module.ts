@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ZeichentoolsComponent } from './components/zeichentools/zeichentools.component';
 import { JoinboardComponent } from './components/joinboard/joinboard.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
