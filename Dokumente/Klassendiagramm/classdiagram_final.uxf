@@ -1,0 +1,2389 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>730</x>
+      <y>440</y>
+      <w>360</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;component&gt;&gt;
+AppComponent
+--
+-userLoggedIn: boolean
+-title: any
+--
++constructor(userHandlerService: UserHandlerService)
++subscribeToUserHandlerService()
+--
+Changes the HTML depending on if 
+the user is logged in or not
+
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>1780</y>
+      <w>360</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;service&gt;&gt;
+UserHandlerService
+--
+-clientName: BehaviorSubject&lt;any[]&gt;
++clientName$: Observable&lt;any[]&gt;
+--
++updateClientName(updatedClientName: any)
+(notifies subscribers)
+
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>680</x>
+      <y>1420</y>
+      <w>160</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-userHandlerService
+m1=1
+&lt;&lt;notifier&gt;&gt;
+layer=3</panel_attributes>
+    <additional_attributes>10.0;360.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>220</y>
+      <w>360</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;component&gt;&gt;
+AppModule
+--
+*This is the root-module*
+
+*imports the following modules:*
+- BrowserModule
+- AppRoutingModule
+- BrowserAnimationsModule
+- FormsModule
+- MatSliderModule
+
+*declares the following other modules:*
+- AppComponent
+- ZeichenflaecheComponent
+- NavbarComponent
+- HomeComponent
+- ZeichentoolsComponent
+- JoinboardComponent
+
+
+
+layer=1
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>520</y>
+      <w>450</w>
+      <h>660</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;370.0;110.0;370.0;580.0;430.0;580.0;430.0;640.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>930</x>
+      <y>1160</y>
+      <w>360</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;component&gt;&gt;
+NavbarComponent
+--
+Displays top Navbar in the HTML
+
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>1090</y>
+      <w>450</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;430.0;10.0;430.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>1160</y>
+      <w>360</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;component&gt;&gt;
+HomeComponent
+--
+-errorDisplayMessage: String
+--
++constructor(userHandlerService: UserHandlerService)
++registerAsGuest()
++registerWithName(userName: String)
+--
+Displays and handles User sign-in UI-Elements 
+(Register &amp; Guest Mode)
+
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>650</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>260</x>
+      <y>680</y>
+      <w>490</w>
+      <h>1120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-userHandlerService
+m1=1
+&lt;&lt;notifier&gt;&gt;
+layer=3</panel_attributes>
+    <additional_attributes>280.0;1100.0;280.0;930.0;10.0;930.0;10.0;10.0;470.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>610</x>
+      <y>2060</y>
+      <w>140</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Observer-pattern
+bg=white
+
+layer=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1380</x>
+      <y>1160</y>
+      <w>420</w>
+      <h>470</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;component&gt;&gt;
+JoinboardComponent
+--
++roomName: String
++userName: String 
++userIsConnected: boolean
++showReturnToRegisterUI: boolean
++HTMLRoomText: String
++HTMLOtherUsersText: String 
++HTMLdebugDisplayMessage: String
++HTMLUserListArray: String[]
++HTMLChatMessagesArray: String[]
+--
++constructor(private userHandlerService: UserHandlerService, 
+  private zeichenflaeche: ZeichenflaecheComponent)
++onBeforeUnload()
++subscribeToUserHandlerService()
++buttonGenerateRoomName()
++inputFieldRoomName_onChangeValue(newRoomName: String)
++copyRoomNameToClipboard()
++returnToHomeComponent()
++enterRoom()
++startRoom()
++disconnectFromRoom()
++sendMessageToServer(msg: String)
+-initSocketConnection()
+-prefixNumberWithZero(number: any): String
+--
+Handles the UI-Transactions for creating, joining and leaving a 
+Session. Also displays various other informations (Chat-messages,
+error-messages, other users in current session...)
+
+group=3
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1110</x>
+      <y>1090</y>
+      <w>1050</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;1030.0;10.0;1030.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>870</x>
+      <y>1620</y>
+      <w>720</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-userHandlerService
+m1=1
+&lt;&lt;subscriber&gt;&gt;
+layer=3</panel_attributes>
+    <additional_attributes>10.0;300.0;700.0;300.0;700.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1950</x>
+      <y>1160</y>
+      <w>410</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;component&gt;&gt;
+DrawboardComponent
+--
++previousClientCanvasStates: any[]
+--
++initSocketConnection()
++closeSocketConnection()
++buttonClearClientCanvas()
++buttonGenerateConfetti()
++buttonClearSessionCanvas()
++buttonPrintPathToConsole()
+-sendPathsToServer()
+-checkIfCanvasChanged()
+--
+Handles Canvas-Data transactions between the Server and
+Client (emit &amp; receive)
+Other clients will receive the Paths of this client if connected
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1790</x>
+      <y>1270</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-zeichenflaeche
+m1=1</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1500</x>
+      <y>2510</y>
+      <w>350</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;module&gt;&gt;
+socketio.js
+--
+socket: SocketIO
+--
++connect(): SocketIO
++getSocket(): SocketIO
++getId(): String
++disconnect()
++emit_sendCanvasPathDataToServer(path: any)
++emit_requestRoomClientsNames()
++emit_sendClientNameToServer(clientName: any)
++emit_enterRoom(roomName: any)
++emit_createRoom(roomName: any)
++emit_leaveRoom()
++emit_chatMessageToServer(msg: any)
++emit_resetPathsRequestFromClient()
++emit_requestRoomClientsIDs()
+--
+Initializes Socket-Connection and emits Events to 
+the Netty-Server
+
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1670</x>
+      <y>1620</y>
+      <w>90</w>
+      <h>910</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-socketio
+m1=1</panel_attributes>
+    <additional_attributes>20.0;890.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2080</x>
+      <y>2510</y>
+      <w>410</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;module&gt;&gt;
+canvas.js
+--
+Initializes the draw-canvas on the HTML and manages Paths
+from the client and other clients.
+Also handles draw-tool functionality
+
+Responsible for redrawing the canvas for various events:
+- client draws himself
+- client receives paths from other clients
+
+
+layer=1
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2170</x>
+      <y>1420</y>
+      <w>90</w>
+      <h>1110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-canvas
+m1=1</panel_attributes>
+    <additional_attributes>20.0;1090.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1750</x>
+      <y>1420</y>
+      <w>280</w>
+      <h>1110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-socketio
+m1=1</panel_attributes>
+    <additional_attributes>20.0;1090.0;10.0;500.0;260.0;500.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2230</x>
+      <y>1520</y>
+      <w>410</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;module&gt;&gt;
+ClientPaths
+--
++clientSessionID: String
+--
++constructor(clientSessionID: String)
++push(path: Path)
++getPaths(): Path[]
+--
+Data object for the drawn paths on the canvas of a client.
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2230</x>
+      <y>1770</y>
+      <w>410</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;module&gt;&gt;
+Path
+--
++push(point: Point)
++getPoints(): Points[]
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2230</x>
+      <y>1920</y>
+      <w>410</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;module&gt;&gt;
+Point
+--
++x: int
++y: int
++size: int
++color: int
+--
+constructor(x: int, y: int, size: int, color: String);
++getValues(): any[]
++toJSON(): Object
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2420</x>
+      <y>1670</y>
+      <w>70</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-paths
+m1=*</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2420</x>
+      <y>1840</y>
+      <w>70</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-points
+m1=*</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2280</x>
+      <y>1420</y>
+      <w>70</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2100</x>
+      <y>1420</y>
+      <w>80</w>
+      <h>1110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;20.0;1090.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1530</x>
+      <y>1090</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1380</x>
+      <y>1130</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>A.1-4
+bg=orange
+
+group=3
+layer=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1450</x>
+      <y>1130</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>B.1-9
+bg=orange
+group=3
+layer=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1600</x>
+      <y>1130</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>C. 1-2, 4-8
+bg=orange
+group=3
+layer=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2430</x>
+      <y>2480</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>C. 3
+bg=yellow
+group=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>220</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>D.1-2
+bg=yellow
+
+group=1
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1690</x>
+      <y>1130</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>D.3-4
+bg=orange
+
+group=3
+layer=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>3100</w>
+      <h>3190</h>
+    </coordinates>
+    <panel_attributes>*src*
+bg=light_gray
+layer=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>60</x>
+      <y>180</y>
+      <w>2950</w>
+      <h>2200</h>
+    </coordinates>
+    <panel_attributes>*app*
+bg=gray
+layer=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>90</x>
+      <y>780</y>
+      <w>2850</w>
+      <h>1540</h>
+    </coordinates>
+    <panel_attributes>*components*
+bg=yellow
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>110</x>
+      <y>1500</y>
+      <w>1030</w>
+      <h>610</h>
+    </coordinates>
+    <panel_attributes>*services*
+bg=orange
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1340</x>
+      <y>2430</y>
+      <w>1410</w>
+      <h>720</h>
+    </coordinates>
+    <panel_attributes>*assets.js*
+bg=gray
+layer=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1760</x>
+      <y>1660</y>
+      <w>230</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;module&gt;&gt;
+chatScrollHandler.js
+--
++scrollToBottomOf_li()
+-focusChatBoxInput()
+--
+Scrolls to last chat-message in 
+the chatbox and focuses the 
+chatInput after sending a message
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1790</x>
+      <y>1580</y>
+      <w>160</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;
+layer=2</panel_attributes>
+    <additional_attributes>100.0;80.0;100.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2460</x>
+      <y>1160</y>
+      <w>410</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;component&gt;&gt;
+DrawtoolsComponent
+--
++previousClientCanvasStates: any[]
+--
++initSocketConnection()
++closeSocketConnection()
++buttonClearClientCanvas()
++buttonGenerateConfetti()
++buttonClearSessionCanvas()
++buttonPrintPathToConsole()
+-sendPathsToServer()
+-checkIfCanvasChanged()
+--
+Handles Canvas-Data transactions between the Server and
+Client (emit &amp; receive)
+Other clients will receive the Paths of this client if connected
+
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2130</x>
+      <y>1090</y>
+      <w>550</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;530.0;10.0;530.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2480</x>
+      <y>1420</y>
+      <w>390</w>
+      <h>1140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;
+layer=2</panel_attributes>
+    <additional_attributes>330.0;10.0;330.0;1120.0;10.0;1120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1230</x>
+      <y>250</y>
+      <w>190</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;HTML&gt;&gt;
+app.component.html
+--
+*&lt;app-root&gt;*
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1220</x>
+      <y>50</y>
+      <w>200</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;HTML&gt;&gt;
+index.html
+--
+*main HTML file*
+defines meta tags and includes scripts
+
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1310</x>
+      <y>150</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>950</x>
+      <y>270</y>
+      <w>300</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;manipulates&gt;&gt;</panel_attributes>
+    <additional_attributes>280.0;20.0;10.0;20.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>930</y>
+      <w>190</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;HTML&gt;&gt;
+app.home.html
+--
+*&lt;app-home&gt;*
+
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>1000</y>
+      <w>120</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;manipulates&gt;&gt;
+
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>930</y>
+      <w>190</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;HTML&gt;&gt;
+app.navbar.html
+--
+*&lt;app-navbar&gt;*
+
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1170</x>
+      <y>1000</y>
+      <w>120</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;manipulates&gt;&gt;
+
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1660</x>
+      <y>930</y>
+      <w>190</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;HTML&gt;&gt;
+app.joinboard.html
+--
+*&lt;app-joinboard&gt;*
+
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1750</x>
+      <y>1000</y>
+      <w>120</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;manipulates&gt;&gt;
+
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2140</x>
+      <y>930</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;HTML&gt;&gt;
+app.drawboardcomponent.html
+--
+*&lt;app-drawboardcomponent&gt;*
+
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2230</x>
+      <y>1000</y>
+      <w>120</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;manipulates&gt;&gt;
+bg=red
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2650</x>
+      <y>930</y>
+      <w>190</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;HTML&gt;&gt;
+app.drawtools.html
+--
+*&lt;app-drawtools&gt;*
+
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2740</x>
+      <y>1000</y>
+      <w>120</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;manipulates&gt;&gt;
+
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1310</x>
+      <y>320</y>
+      <w>30</w>
+      <h>560</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+
+layer=2</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;540.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>840</y>
+      <w>550</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+
+layer=2</panel_attributes>
+    <additional_attributes>530.0;20.0;10.0;20.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1160</x>
+      <y>840</y>
+      <w>180</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+
+layer=2</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1310</x>
+      <y>840</y>
+      <w>470</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+
+layer=2</panel_attributes>
+    <additional_attributes>10.0;20.0;450.0;20.0;450.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1750</x>
+      <y>840</y>
+      <w>510</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+
+layer=2</panel_attributes>
+    <additional_attributes>10.0;20.0;490.0;20.0;490.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2230</x>
+      <y>840</y>
+      <w>540</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+
+layer=2</panel_attributes>
+    <additional_attributes>10.0;20.0;520.0;20.0;520.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>3520</y>
+      <w>5630</w>
+      <h>2470</h>
+    </coordinates>
+    <panel_attributes>*hs.ooad.backend*
+bg=light_gray
+
+layer=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1270</x>
+      <y>3680</y>
+      <w>360</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>*acl*
+bg=yellow
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1710</x>
+      <y>3630</y>
+      <w>1880</w>
+      <h>2310</h>
+    </coordinates>
+    <panel_attributes>*netty_server*
+bg=gray
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1720</x>
+      <y>3670</y>
+      <w>860</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>*boundary*
+bg=yellow
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1720</x>
+      <y>3970</y>
+      <w>860</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>*control*
+bg=yellow
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1720</x>
+      <y>4310</y>
+      <w>860</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>*entity*
+bg=yellow
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1750</x>
+      <y>4950</y>
+      <w>790</w>
+      <h>850</h>
+    </coordinates>
+    <panel_attributes>*listener*
+bg=orange
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1380</x>
+      <y>3720</y>
+      <w>190</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+ContractWithNettyServer
+--
++ startServer(): void
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2000</x>
+      <y>4720</y>
+      <w>320</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Server
+--
+-roomIDs: Set&lt;String&gt;
+-config: Configuration
+-server: SocketIOServer
+--
++startServer(): void
+-init()
+-getClientIDs(roomID: String): ArrayList&lt;String&gt;
+-addClientToRoom(client: SocketIOClient, 
+roomID: String)
+-getRoomID(client: SocketIOClient): String
+
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>3720</y>
+      <w>250</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>ServerApplication
+--
+
+_+ main(args: String[]) : void_
+
+
+
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1760</x>
+      <y>3730</y>
+      <w>240</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>ServerBoundary
+--
++ startServer(): void
+
+layer=3
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1560</x>
+      <y>3780</y>
+      <w>220</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=4</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1740</x>
+      <y>4010</y>
+      <w>340</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>*interface*
+bg=orange
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>2140</x>
+      <y>4010</y>
+      <w>340</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>*service*
+bg=orange
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1760</x>
+      <y>4060</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+ServerStarting
+--
++ startServer(): void
+
+layer=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2170</x>
+      <y>4060</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>ServerStartingService
+--
++ startServer(): void
+layer=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1810</x>
+      <y>3840</y>
+      <w>90</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+layer=5
+&lt;&lt;injected&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;220.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1930</x>
+      <y>4100</y>
+      <w>260</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2060</x>
+      <y>4470</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+ServerCatalog
+--
++ startServer() : void
+
+
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2130</x>
+      <y>4150</y>
+      <w>150</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+layer=5
+&lt;&lt;injects&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;320.0;10.0;240.0;130.0;240.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2140</x>
+      <y>4560</y>
+      <w>30</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=4</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>2640</x>
+      <y>3670</y>
+      <w>650</w>
+      <h>1270</h>
+    </coordinates>
+    <panel_attributes>*acl*
+bg=yellow
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2670</x>
+      <y>4720</y>
+      <w>260</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+ContractWithUserManagement
+--
++ createUser(user : UserDTO) : UserDTO
++ updateUser(user: UserDTO): UserDTO
+
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2980</x>
+      <y>4720</y>
+      <w>260</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>UserDTO
+--
++ username: String
++ password: String
++ paths : ArrayList&lt;JSONObject&gt;
+
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2310</x>
+      <y>4780</y>
+      <w>380</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+layer=4
+&lt;&lt;injects&gt;&gt;</panel_attributes>
+    <additional_attributes>360.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>3650</x>
+      <y>3600</y>
+      <w>1880</w>
+      <h>2350</h>
+    </coordinates>
+    <panel_attributes>*user_management*
+bg=gray
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>3670</x>
+      <y>3660</y>
+      <w>1710</w>
+      <h>460</h>
+    </coordinates>
+    <panel_attributes>*boundary*
+bg=yellow
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4610</x>
+      <y>3730</y>
+      <w>260</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>UserBoundary
+--
++ createUser(user : UserDTO) : UserDTO
++ updateUser(user: UserDTO): UserDTO
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>3670</x>
+      <y>4140</y>
+      <w>1710</w>
+      <h>800</h>
+    </coordinates>
+    <panel_attributes>*control*
+bg=yellow
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2800</x>
+      <y>3780</y>
+      <w>1830</w>
+      <h>960</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=4</panel_attributes>
+    <additional_attributes>10.0;940.0;10.0;10.0;1810.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>3670</x>
+      <y>4960</y>
+      <w>1710</w>
+      <h>460</h>
+    </coordinates>
+    <panel_attributes>*Entity*
+bg=yellow
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>3690</x>
+      <y>4190</y>
+      <w>1660</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>*interface*
+bg=orange
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3820</x>
+      <y>4270</y>
+      <w>280</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+CreatingUser
+--
++ createUser(user UserDTO) : UserDTO
+ 
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4190</x>
+      <y>4270</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+UpdatingUser
+--
++ updateUser(user UserDTO) : UserDTO
+ 
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4600</x>
+      <y>4270</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+DeletingUser
+--
++ deleteUser(user UserDTO) : boolean
+ 
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3960</x>
+      <y>3800</y>
+      <w>670</w>
+      <h>490</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;injects&gt;&gt;
+layer=5</panel_attributes>
+    <additional_attributes>10.0;470.0;10.0;10.0;650.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4310</x>
+      <y>3820</y>
+      <w>320</w>
+      <h>470</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;injects&gt;&gt;
+layer=5</panel_attributes>
+    <additional_attributes>10.0;450.0;10.0;10.0;300.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>3690</x>
+      <y>4540</y>
+      <w>1660</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>*service*
+bg=orange
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3820</x>
+      <y>4610</y>
+      <w>280</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Service&gt;&gt;
+CreatingUserService
+--
++ createUser(user UserDTO) : UserDTO
+ 
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3950</x>
+      <y>4360</y>
+      <w>30</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4190</x>
+      <y>4610</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Service&gt;&gt;
+UpdatingUserService
+--
++ updateUser(user UserDTO) : UserDTO
+ 
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4310</x>
+      <y>4360</y>
+      <w>30</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4600</x>
+      <y>4610</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Service&gt;&gt;
+DeletingUserService
+--
++ deleteUser(user UserDTO) : boolean
+ 
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4950</x>
+      <y>5130</y>
+      <w>240</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+User
+--
+- username: String
+- paths : ArrayList&lt;JSONObject&gt;
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4730</x>
+      <y>4360</y>
+      <w>30</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4190</x>
+      <y>5050</y>
+      <w>290</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+UserCatalog
+--
++ createUser(user User) : UserDTO
++ updateUser(user User) : UserDTO
++ deleteUser(user User) : boolean
++ searchUser(user UserDTO) : UserDTO
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3960</x>
+      <y>4700</y>
+      <w>250</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;injects&gt;&gt;
+layer=5</panel_attributes>
+    <additional_attributes>230.0;400.0;10.0;400.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4320</x>
+      <y>4710</y>
+      <w>80</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;injects&gt;&gt;
+layer=5</panel_attributes>
+    <additional_attributes>10.0;340.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4470</x>
+      <y>4640</y>
+      <w>150</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;injects&gt;&gt;
+layer=5</panel_attributes>
+    <additional_attributes>10.0;430.0;80.0;430.0;80.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4180</x>
+      <y>5570</y>
+      <w>310</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Repository&gt;&gt;
+UserRepository
+--
++ createUser(user User) : User
++ updateUser(user User) : User
++ searchUser(user UserDTO) : User
++ deleteUser(user User) : boolean
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>3670</x>
+      <y>5440</y>
+      <w>1710</w>
+      <h>460</h>
+    </coordinates>
+    <panel_attributes>*Entity*
+bg=yellow
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4320</x>
+      <y>5160</y>
+      <w>30</w>
+      <h>430</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=3</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;410.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>4610</x>
+      <y>5630</y>
+      <w>180</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>unterstützt
+CRUD-Funktionalität
+bg=orange
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4480</x>
+      <y>5660</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=3</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4610</x>
+      <y>4740</y>
+      <w>280</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Service&gt;&gt;
+Converter
+--
++ convertToUser(userDTO: UserDTO): User
++ createUserDTO(user : User) : UserDTO
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4940</x>
+      <y>4270</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+SearchingUser
+--
++ searchUser(user UserDTO) : UserDTO
+ 
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>5010</x>
+      <y>4610</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Service&gt;&gt;
+SearchingUserService
+--
++ searchUser(user UserDTO) : UserDTO
+ 
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4730</x>
+      <y>4880</y>
+      <w>240</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;creates&gt;&gt;
+layer=4</panel_attributes>
+    <additional_attributes>220.0;290.0;10.0;290.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4470</x>
+      <y>4700</y>
+      <w>690</w>
+      <h>390</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;injects&gt;&gt;
+layer=5</panel_attributes>
+    <additional_attributes>10.0;370.0;670.0;370.0;670.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3230</x>
+      <y>4760</y>
+      <w>1400</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;creates&gt;&gt;
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;930.0;10.0;930.0;90.0;1380.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3990</x>
+      <y>4700</y>
+      <w>640</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-converter
+m1=1
+layer=5</panel_attributes>
+    <additional_attributes>620.0;120.0;10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4880</x>
+      <y>4700</y>
+      <w>350</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-converter
+m1=1
+layer=5</panel_attributes>
+    <additional_attributes>10.0;100.0;330.0;100.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4280</x>
+      <y>4700</y>
+      <w>350</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-converter
+m1=1
+layer=5</panel_attributes>
+    <additional_attributes>330.0;80.0;10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>4880</x>
+      <y>4640</y>
+      <w>140</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=-converter
+m1=1
+layer=5</panel_attributes>
+    <additional_attributes>10.0;130.0;120.0;130.0;120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1710</x>
+      <y>2820</y>
+      <w>920</w>
+      <h>2040</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+[sever &lt;=&gt; client]
+layer=4
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0;900.0;160.0;890.0;2020.0;610.0;2020.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>5100</x>
+      <y>4360</y>
+      <w>80</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0;60.0;220.0;60.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>3740</y>
+      <w>200</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+StartingServer
+--
++ startServer(): void
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>3770</y>
+      <w>220</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;injects&gt;&gt;
+layer=4</panel_attributes>
+    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>3720</y>
+      <w>260</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Controller&gt;&gt;
+StartingServerController
+--
++ startServer(): void
+layer=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>90</x>
+      <y>3630</y>
+      <w>1570</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>*application_startpoint*
+bg=gray
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>500</x>
+      <y>3680</y>
+      <w>720</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>*control*
+bg=yellow
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>3770</y>
+      <w>160</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=4</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1140</x>
+      <y>3750</y>
+      <w>260</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+layer=4</panel_attributes>
+    <additional_attributes>240.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1780</x>
+      <y>5290</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AddListener_onConnect
+--
++ addListener(server: SocketIoServer): void
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1740</x>
+      <y>4670</y>
+      <w>850</w>
+      <h>1230</h>
+    </coordinates>
+    <panel_attributes>*gateway*
+bg=yellow
+layer=2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2000</x>
+      <y>5020</y>
+      <w>300</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>AddListener_Manager
+--
+- listeners : List&lt;AddListener&gt;
+--
++ addToServer(server : SocketIoServer): void
++ add(addListener: AddListener): void
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2010</x>
+      <y>5190</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+AddListener
+--
++ addListener(server: SocketIoServer): void
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2050</x>
+      <y>5260</y>
+      <w>120</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>100.0;10.0;100.0;80.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2140</x>
+      <y>5110</y>
+      <w>90</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+layer=5
+m1=0..*
+r1=- listeners</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1780</x>
+      <y>5380</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AddListener_onDisconnect
+--
++ addListener(server: SocketIoServer): void
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2050</x>
+      <y>5260</y>
+      <w>120</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>100.0;10.0;100.0;160.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1780</x>
+      <y>5470</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AddListener_sendCanvasPathDataToServer
+--
++ addListener(server: SocketIoServer): void
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2050</x>
+      <y>5260</y>
+      <w>120</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>100.0;10.0;100.0;250.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1780</x>
+      <y>5560</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AddListener_chatMessageToServer
+--
++ addListener(server: SocketIoServer): void
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2050</x>
+      <y>5260</y>
+      <w>120</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>100.0;10.0;100.0;340.0;10.0;340.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2220</x>
+      <y>5290</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AddListener_resetPathRequestFromClient
+--
++ addListener(server: SocketIoServer): void
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2140</x>
+      <y>5260</y>
+      <w>100</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;80.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2220</x>
+      <y>5380</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AddListener_createRoom
+--
++ addListener(server: SocketIoServer): void
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2140</x>
+      <y>5260</y>
+      <w>100</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0;80.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2220</x>
+      <y>5470</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AddListener_enterRoom
+--
++ addListener(server: SocketIoServer): void
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2140</x>
+      <y>5260</y>
+      <w>100</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;250.0;80.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2220</x>
+      <y>5560</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AddListener_leaveRoom
+--
++ addListener(server: SocketIoServer): void
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2140</x>
+      <y>5260</y>
+      <w>100</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;340.0;80.0;340.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2010</x>
+      <y>5660</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>AddListener_requestRoomClientsNames
+--
++ addListener(server: SocketIoServer): void
+layer=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2140</x>
+      <y>5260</y>
+      <w>30</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+layer=5</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;400.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2140</x>
+      <y>4890</y>
+      <w>90</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+layer=5
+m1=0..*
+r1=- listeners</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
