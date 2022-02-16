@@ -16,9 +16,11 @@ export class HomeComponent {
     this.userHandlerService.updateClientName("Gastnutzer" + Math.floor(Math.random() * 2500));
   }
 
-  registerWithName(userName) {
-    if (userName.length >= 6) {
+  registerWithName(userName, password) {
+    if (userName.length >= 4 && password.length >= 6) {
       this.userHandlerService.updateClientName(userName);
+    } else if (password.length < 6) {
+      this.errorDisplayMessage = "Passwort zu kurz";
     } else {
       this.errorDisplayMessage = "Name ist zu kurz";
     }
