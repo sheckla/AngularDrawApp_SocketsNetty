@@ -1,4 +1,5 @@
-package hs.ooad.netty_server.gateway;
+package hs.ooad.backend.netty_server.gateway;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -9,19 +10,18 @@ import com.corundumstudio.socketio.AckRequest;
 import com.corundumstudio.socketio.Configuration;
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
-import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
 import com.corundumstudio.socketio.listener.DisconnectListener;
 import com.google.gson.Gson;
 
-import org.json.*;
+import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
-import hs.ooad.netty_server.gateway.listener.AddListener_OnConnect;
-import hs.ooad.whiteboard.acl.ContractWithNettyServer;
+import hs.ooad.backend.netty_server.entity.ServerCatalog;
+import hs.ooad.backend.netty_server.gateway.listener.AddListener_OnConnect;
 
-@Component("contractWithNettyServer")
-public class Server implements ContractWithNettyServer {
+@Component("serverCatalog")
+public class Server implements ServerCatalog {
   private Set<String> roomIDs = new HashSet<>();
   private Configuration config = new Configuration();
   private SocketIOServer server;
@@ -50,14 +50,6 @@ public class Server implements ContractWithNettyServer {
     addListenerToServer.add(new AddListener_OnConnect());
     addListenerToServer.addToServer(server);
 
-    /* this.server.addConnectListener(new ConnectListener() {
-
-      @Override
-      public void onConnect(SocketIOClient client) {
-        System.out.println("ClientID: " + client.getSessionId() + " is connected!");
-      }
-    }); */
-
     this.server.addDisconnectListener(new DisconnectListener() {
 
       @Override
@@ -66,13 +58,12 @@ public class Server implements ContractWithNettyServer {
         server.getBroadcastOperations().sendEvent("clientDisconnected", client.getSessionId());
       }
     });
-    
 
     server.addEventListener("sendCanvasPathDataToServer", String.class, new DataListener<String>() {
 
       @Override
       public void onData(SocketIOClient client, String data, AckRequest ackSender) throws Exception {
-        String roomID =  getRoomId(client);
+        String roomID = getRoomId(client);
         JSONObject obj = new JSONObject(data);
         System.out.println(client.getSessionId() + " send paths");
         server.getRoomOperations(roomID).sendEvent("sendCanvasPathDataToClient", client, obj.toString());
@@ -93,7 +84,7 @@ public class Server implements ContractWithNettyServer {
 
       @Override
       public void onData(SocketIOClient client, String data, AckRequest ackSender) throws Exception {
-        String roomID =  getRoomId(client);
+        String roomID = getRoomId(client);
         server.getRoomOperations(roomID).sendEvent("resetPathsRequestToClient");
       }
     });
@@ -154,7 +145,6 @@ public class Server implements ContractWithNettyServer {
       }
     });
 
-
     // Returns the unique Client-Session ID's as json
     server.addEventListener("requestRoomClientsIDs", String.class, new DataListener<String>() {
 
@@ -204,6 +194,6 @@ public class Server implements ContractWithNettyServer {
   }
 
   private String getRoomId(SocketIOClient client) {
-      return client.getAllRooms().toArray()[0].toString();
+    return client.getAllRooms().toArray()[0].toString();
   }
 }
