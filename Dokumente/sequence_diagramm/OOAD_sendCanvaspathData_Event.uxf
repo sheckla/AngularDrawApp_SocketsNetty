@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLSequenceAllInOne</id>
+    <coordinates>
+      <x>744</x>
+      <y>432</y>
+      <w>3944</w>
+      <h>720</h>
+    </coordinates>
+    <panel_attributes>title= Send Path-Data Event Sequencediagramm
+obj=Connected Client~a ACTOR
+obj=*Other Clients DrawboardComponent~b1 
+obj=canvas.js~js
+obj=Client DrawboardComponent~b 
+obj=socketio~c
+obj=server~d
+obj=DataListener~e CREATED_LATER
+
+d-&gt;&gt;&gt;e:... addEventListener("sendCanvasPathDataToServer") ...
+on=a
+a-&gt;&gt;&gt;b : User draws on Board; on=b; 
+combinedFragment=checkIfCanvasChanged~alt1 b c; b-&gt;&gt;&gt;b + :checkIfCanvasChanged();
+
+tick=
+..=alt1; b:[true]
+b-&gt;&gt;&gt;c: sendPathsToServer(paths: String);on=c
+c-&gt;e: emit_sendCanvasPathDataToServer(paths); on=e;
+c.&gt;b;  e-&gt;&gt;&gt;e +5: sendEvent("sendCanvasPathDataToClient", client, paths); off=c
+
+tick=
+..=alt1; b:[false]
+--
+b.&gt;a;off=b
+tick=
+e-&gt;c;off=e;off=a;on=c
+c-&gt;b1: on("sendCanvasPathDataToClient"); on=b1;off=c
+b1-&gt;&gt;&gt;js: prepareOtherClientPathData(data);on=js
+js-&gt;&gt;&gt;js +: (update Canvas with new Paths)
+tick=
+js.&gt;b1;off=js
+off=b1
+
+tick=
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>328</y>
+      <w>152</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>360</y>
+      <w>152</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>784</x>
+      <y>384</y>
+      <w>152</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>920</x>
+      <y>328</y>
+      <w>144</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Asynchronous Message
+
+Synchronous Message
+
+Return Message
+bg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>1456</x>
+      <y>480</y>
+      <w>48</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
