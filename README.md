@@ -2,17 +2,19 @@
 
 Angular Single-Page Website with Websockets(SocketIO) and a Netty-Server
 
-when cloning:
+# when cloning:
   - start terminal in ./client
   - type in terminal 'npm install @angular/cli'
 
-(Using Angular - https://angular.io/, 
-start the Client(Angular):
+
+# start the Client(Angular):
+(Using Angular - https://angular.io/)
   - start terminal in ./client
   - type 'ng serve'
  
+
+# starting the back-end Server(Netty):
 (Using Spring - https://spring.io/)
-starting the back-end Server(Netty):
   - start CMD in ./server
   - start server with 'mvnw spring-boot:run'
   
