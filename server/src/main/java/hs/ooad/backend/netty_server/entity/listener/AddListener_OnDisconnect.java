@@ -1,4 +1,4 @@
-package hs.ooad.backend.netty_server.gateway.listener;
+package hs.ooad.backend.netty_server.entity.listener;
 
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.SocketIOClient;

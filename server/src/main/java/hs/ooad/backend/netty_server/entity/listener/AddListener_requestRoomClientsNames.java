@@ -1,4 +1,4 @@
-package hs.ooad.backend.netty_server.gateway.listener;
+package hs.ooad.backend.netty_server.entity.listener;
 
 public class AddListener_requestRoomClientsNames {
 

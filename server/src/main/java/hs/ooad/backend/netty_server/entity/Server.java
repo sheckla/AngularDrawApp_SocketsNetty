@@ -1,4 +1,4 @@
-package hs.ooad.backend.netty_server.gateway;
+package hs.ooad.backend.netty_server.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,18 +17,17 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
-import hs.ooad.backend.netty_server.entity.ServerCatalog;
-import hs.ooad.backend.netty_server.gateway.listener.AddListener_OnConnect;
-import hs.ooad.backend.netty_server.gateway.listener.AddListener_OnDisconnect;
-import hs.ooad.backend.netty_server.gateway.listener.AddListener_chatMessageToServer;
-import hs.ooad.backend.netty_server.gateway.listener.AddListener_createRoomr;
-import hs.ooad.backend.netty_server.gateway.listener.AddListener_enterRoom;
-import hs.ooad.backend.netty_server.gateway.listener.AddListener_leaveRoom;
-import hs.ooad.backend.netty_server.gateway.listener.AddListener_requestRoomClientsIDs;
-import hs.ooad.backend.netty_server.gateway.listener.AddListener_requestRoomClientsNames;
-import hs.ooad.backend.netty_server.gateway.listener.AddListener_resetPathsRequestfromClient;
-import hs.ooad.backend.netty_server.gateway.listener.AddListener_sendCanvasPathDataToServer;
-import hs.ooad.backend.netty_server.gateway.listener.AddListener_sendClientNameToServer;
+import hs.ooad.backend.netty_server.entity.listener.AddListener_OnConnect;
+import hs.ooad.backend.netty_server.entity.listener.AddListener_OnDisconnect;
+import hs.ooad.backend.netty_server.entity.listener.AddListener_chatMessageToServer;
+import hs.ooad.backend.netty_server.entity.listener.AddListener_createRoomr;
+import hs.ooad.backend.netty_server.entity.listener.AddListener_enterRoom;
+import hs.ooad.backend.netty_server.entity.listener.AddListener_leaveRoom;
+import hs.ooad.backend.netty_server.entity.listener.AddListener_requestRoomClientsIDs;
+import hs.ooad.backend.netty_server.entity.listener.AddListener_requestRoomClientsNames;
+import hs.ooad.backend.netty_server.entity.listener.AddListener_resetPathsRequestfromClient;
+import hs.ooad.backend.netty_server.entity.listener.AddListener_sendCanvasPathDataToServer;
+import hs.ooad.backend.netty_server.entity.listener.AddListener_sendClientNameToServer;
 
 @Component("serverCatalog")
 public class Server implements ServerCatalog {
