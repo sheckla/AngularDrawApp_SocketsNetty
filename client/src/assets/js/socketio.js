@@ -2,18 +2,31 @@
 // stop with strg + c
 
 var socket;
+var host = "localhost:8080" // "drawapp-server.herokuapp.com"
+
+export function test() {
+  socket =  io(host, {
+    transports: ['websocket'],
+  });
+  console.log("emit");
+  socket.emit("connection");
+  socket.on("send", () => {
+    console.log("fucking works");
+  });
+}
 
 export function connect() {
-  socket =  io('http://localhost:9092',{
-  transports: ['websocket'],
-  upgrade: false
-});
+  socket =  io(host,{
+    transports: ['websocket'],
+    upgrade: false
+  });
+  socket.emit("connection");
 
-socket.on("connect", () => {
-  console.log("(this client) socketio.js - client connected successfully @" + socket.id);
-  socket.emit("notifyClients", "")
-});
-return socket;
+  socket.on("connectionSuccessfull", () => {
+    console.log("connected to host with id@" + socket.id);
+    socket.emit("notifyClients", "")
+  });
+  return socket;
 }
 
 export function getSocket() {
