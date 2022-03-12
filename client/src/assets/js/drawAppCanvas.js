@@ -16,11 +16,9 @@ const drawSizeIncrement = 3;
 var ctx;
 var canvas;
 
-$( document ).ready(function() {
-  canvasEngine();
-});
 
-function canvasEngine() {
+
+export function canvasEngine() {
   canvas = document.getElementById("zeichenflaeche");
   ctx = canvas.getContext("2d");
   var buttons = document.getElementsByClassName('color-button');
@@ -29,6 +27,7 @@ function canvasEngine() {
   var drawSize = 4;
   var color = "black";
 
+  clearAllPaths();
   initButtons();
   initListeners();
   initCanvasDim();

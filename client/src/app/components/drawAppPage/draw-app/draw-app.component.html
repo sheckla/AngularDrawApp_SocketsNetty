@@ -1,0 +1,20 @@
+<body>
+  <div class="container-fluid text-white bg-dark">
+    
+    <div class="row align-items-top">
+      <div class="col">
+        <app-home *ngIf="!userLoggedIn; else elseBlock"></app-home>
+        <script src="../../../../assets/js/drawAppCanvas.js"></script>
+      </div>
+      <ng-template #elseBlock>
+        <app-joinboard></app-joinboard>
+      </ng-template>
+      <div class="col col-xl-8 col-md-8 col-sm-12 col-sm-border-bottom ">
+        <div class="row ">
+          <app-drawboard></app-drawboard>
+          <app-drawtools class=""></app-drawtools>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

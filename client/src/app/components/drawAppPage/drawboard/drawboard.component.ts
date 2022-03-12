@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as canvas from '../../../assets/js/canvas.js'
-import * as socketio from '../../../assets/js/socketio.js';
+import * as canvas from '../../../../assets/js/drawAppCanvas.js'
+import * as socketio from '../../../../assets/js/socketio.js';
 import { interval } from 'rxjs';
 import { Point } from './data/Point';
 import { Paths } from './data/ClientPaths';
@@ -17,6 +17,7 @@ export class DrawboardComponent implements OnInit {
   previousClientCanvasStates: any[] = [];
 
   ngOnInit(): void {
+    canvas.canvasEngine();
   }
 
   constructor() {

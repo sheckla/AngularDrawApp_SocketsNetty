@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSliderModule } from '@angular/material/slider';
-import { DrawboardComponent } from './components/drawboard/drawboard.component';
+import { IndexComponent } from './components/indexPage/index/index.component';
+import { DrawAppComponent } from './components/drawAppPage/draw-app/draw-app.component';
+import { DrawboardComponent } from './components/drawAppPage/drawboard/drawboard.component';
+import { DrawtoolsComponent } from './components/drawAppPage/drawtools/drawtools.component';
+import { HomeComponent } from './components/drawAppPage/home/home.component';
+import { JoinboardComponent } from './components/drawAppPage/joinboard/joinboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
-import { DrawtoolsComponent } from './components/drawtools/drawtools.component';
-import { JoinboardComponent } from './components/joinboard/joinboard.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { JoinboardComponent } from './components/joinboard/joinboard.component';
     HomeComponent,
     DrawtoolsComponent,
     JoinboardComponent,
+    DrawAppComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
