@@ -2,7 +2,7 @@
 // stop with strg + c
 
 var socket;
-var host = "localhost:8080" // "drawapp-server.herokuapp.com"
+var host = "https://netty-server-drawapp.herokuapp.com/";
 
 export function test() {
   socket =  io(host, {

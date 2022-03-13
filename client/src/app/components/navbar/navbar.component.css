@@ -4,6 +4,10 @@ img {
   margin-right: 5px;
 }
 
+/* nav {
+  margin-bottom: 1em;
+} */
+
 /* * {
   border: 1px solid red;
 }
@@ -11,4 +15,17 @@ img {
 
  .navbar-nav > .active > a {
   background-color: red ;
+}
+
+.nav-item:nth-child(1) {
+  background-color: rgb(22, 22, 22) ;
+}
+
+.nav-item:nth-child(2) {
+  background-color: rgb(80, 80, 80);
+}
+
+.nav-item:hover {
+  filter: brightness(155%);
+  color:white !important;
 }

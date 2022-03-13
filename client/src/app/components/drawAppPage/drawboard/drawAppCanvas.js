@@ -207,6 +207,7 @@ export function canvasEngine() {
 // --------------------------------------------------
 export function prepareOtherClientPathData(paths) {
   var json = JSON.parse(paths);
+  console.log((new TextEncoder().encode(paths)).length / 1024 / 1024)
   var paths = json.paths;
   var clientID = json.clientSessionID;
 

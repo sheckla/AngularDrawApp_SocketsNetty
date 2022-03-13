@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { UserHandlerService } from 'src/app/services/user-handler.service';
+import { UserHandlerService } from 'src/app/components/drawAppPage/services/user-handler.service';
 import * as socketio from '../../../../assets/js/socketio';
 import { DrawboardComponent } from '../drawboard/drawboard.component';
 import * as chatScrollHandler from './chatScrollHandler.js'

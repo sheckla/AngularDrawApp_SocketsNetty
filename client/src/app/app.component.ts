@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserHandlerService } from './services/user-handler.service';
+import { Router } from '@angular/router';
+import { UserHandlerService } from './components/drawAppPage/services/user-handler.service';
 
 
 @Component({
@@ -10,6 +11,13 @@ import { UserHandlerService } from './services/user-handler.service';
 export class AppComponent implements OnInit {
   title: any = 'OOAD'
 
+  constructor(private router: Router) {
+
+  }
+
   ngOnInit(): void {
+    setTimeout(() => {
+      this.router.navigate(['index']);
+  }, 0);  //5s
   }
 }

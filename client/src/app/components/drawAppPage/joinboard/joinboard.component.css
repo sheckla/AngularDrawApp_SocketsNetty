@@ -10,6 +10,11 @@
   background-color: lightgrey;
 }
 
+.room-display-text {
+  text-align: left !important;
+  background-color: #464646 !important
+}
+
 .img {
   width:1em;
   filter: saturate(0%) contrast(0%) brightness(500%)
