@@ -18,14 +18,17 @@ img {
 }
 
 .nav-item:nth-child(1) {
-  background-color: rgb(22, 22, 22) ;
+  background-color: rgb(56, 46, 46) ;
 }
 
 .nav-item:nth-child(2) {
-  background-color: rgb(80, 80, 80);
+  background-color: rgb(59, 29, 29);
 }
 
 .nav-item:hover {
   filter: brightness(155%);
   color:white !important;
+}
+
+.nav-link {
 }

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.router.navigate(['index']);
+      this.router.navigate(['drawApp']);
   }, 0);  //5s
   }
 }

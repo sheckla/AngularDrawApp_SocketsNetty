@@ -1,4 +1,4 @@
-<div class="container mt-1">
+<div class="container mt-3">
   <div class="col col-sm-auto mb-3">
     <div class="row">
       <div class="text-center">
@@ -9,7 +9,8 @@
     <div class="row">
       <div class="col text-center">
         <div *ngIf="showReturnToRegisterUI">
-          <button type="submit" class="btn btn-secondary" (click)="returnToHomeComponent()"><img src="../../../assets/img/back.png" class="img"/> Zurück zur Anmeldung</button>
+          <button type="submit" class="btn btn-light btn-lg-height" (click)="returnToHomeComponent()">
+            <img src="../../../assets/img/back.png" class="img"/> Zurück zur Anmeldung</button>
         </div>
       </div>
     </div>
@@ -19,65 +20,81 @@
     <div *ngIf="userIsConnected; else elseBlock">
       <div class="mt-3">
         <div class="input-group">
-          <button class="btn btn-secondary form-control room-display-text" (click)="copyRoomNameToClipboard()"><img class="img" src="../../../assets/img/sketching.png"/> {{HTMLRoomText}}</button>
-          <button class="btn btn-danger" (click)="disconnectFromRoom()"><img src="../../../assets/img/back.png" class="img"/> verlassen</button>
-        </div>
-      </div>
-    </div>
-    <h3 class="mt-3">{{HTMLOtherUsersText}}</h3>
-  </div>
-  <ng-template #elseBlock>
-    <form>
-      <div class="mt-3 row">
-        <label for="boardcode" class="form-label text-left">Raum:</label>
-        <div>
-          <div class="input-group">
-            <input type="text" class="form-control" id="boardcode" placeholder="Sturmwind-Zeichnerclub" #roomNameInput
-            (input)="inputFieldRoomName_onChangeValue(roomNameInput.value)" value="{{roomName}}">
-            <button class="btn btn-secondary float-end" (click)="buttonGenerateRoomName()">Generieren</button>
+          <button class="btn btn-secondary form-control room-display-text" (click)="copyRoomNameToClipboard()">
+            <img class="img" src="../../../assets/img/sketching.png"/> {{HTMLRoomText}}</button>
+            <button class="btn btn-danger btn-lg-height" (click)="disconnectFromRoom()">
+              <img src="../../../assets/img/back.png" class="img"/> verlassen</button>
           </div>
-          <div id="nameInputHelp" class="form-text">Wähle den Namen des Raums, welchem du beitreten oder erstellen möchtest</div>
         </div>
       </div>
+      <h3 class="mt-3">{{HTMLOtherUsersText}}</h3>
+    </div>
+    <ng-template #elseBlock>
+      <form>
+        <div class="mt-3 row">
+          <label for="boardcode" class="form-label text-left">Raum:</label>
+          <div>
+            <div class="input-group">
+              <input type="text" class="form-control btn-lg-height" id="boardcode" placeholder="Sturmwind-Zeichnerclub" #roomNameInput
+              (input)="inputFieldRoomName_onChangeValue(roomNameInput.value)" value="{{roomName}}">
+              <button class="btn btn-success btn-gradient float-end" (click)="buttonGenerateRoomName()">Generieren</button>
+            </div>
+            <div id="nameInputHelp" class="form-text">Wähle den Namen des Raums, welchem du beitreten oder erstellen möchtest</div>
+          </div>
+        </div>
         <div class="row mt-3">
           <div class="col">
-            <button class="btn btn-success w-100" (click)="createRoom()"> Raum erstellen</button>
+            <button class="btn btn-success w-100 btn-lg-height" (click)="createRoom()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+              </svg>
+              Raum erstellen
+              <span *ngIf="createRoomLoading" class="spinner-border spinner-border-sm" role="status"></span>
+            </button>
           </div>
           <div class="col">
-            <button class="btn btn-success float-end ms-2 w-100" (click)="enterRoom()"> Raum beitreten</button>
+            <button class="btn btn-success float-end ms-2 w-100 btn-lg-height" (click)="enterRoom()">
+              <div class="row">
+                <div class="col">
+                  Raum beitreten
+                </div>
+                <div class="col">
+                  <span *ngIf="enterRoomLoading" class="ml-3 spinner-border spinner-border-sm" role="status"></span>
+                </div>
+              </div>
+            </button>
           </div>
         </div>
-    </form>
-  </ng-template>
-
-  <div id="chatDisplay">
-    <ul>
-      <li *ngFor = "let msg of HTMLUserListArray" >
-        <img src="../../../assets/img/user.png" class="img"/> {{msg}}</li>
-      </ul>
-    </div>
-
-    <div (keyup.enter)="sendMessageToServer(chatMessage.value);chatMessage.value = ''" *ngIf="userIsConnected; else chatElseBlock">
-      <!-- https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-scrollable.html -->
-      <div>
-        <ul class="rounded mb-2 bg-dark"id="ss_elem_list" tabindex="0" role="listbox" aria-labelledby="ss_elem">
-          <li class="li-chat m-1" tabindex="1" *ngFor = "let msg of HTMLChatMessagesArray">{{msg}}</li>
+      </form>
+    </ng-template>
+    <div id="chatDisplay" (click)="sendMessageToServer('a')">
+      <ul>
+        <li *ngFor = "let msg of HTMLUserListArray" >
+          <img src="../../../assets/img/user.png" class="img"/> {{msg}}</li>
         </ul>
       </div>
-      <div>
-        <div class="input-group">
-          <input class="form-control" type="text" id="chatBox" #chatMessage>
-          <button class="btn btn-success float-end" (click)="sendMessageToServer(chatMessage.value);chatMessage.value = ''">Senden</button>
+
+      <div (keyup.enter)="sendMessageToServer(chatMessage.value);chatMessage.value = ''" *ngIf="userIsConnected; else chatElseBlock">
+        <!-- https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-scrollable.html -->
+        <div>
+          <ul class="rounded mb-2 bg-dark"id="ss_elem_list" tabindex="0" role="listbox" aria-labelledby="ss_elem">
+            <li class="li-chat m-1" tabindex="1" *ngFor = "let msg of HTMLChatMessagesArray">{{msg}}</li>
+          </ul>
+        </div>
+        <div>
+          <div class="input-group">
+            <input class="form-control" type="text" id="chatBox" #chatMessage>
+            <button class="btn btn-success float-end btn-lg-height" (click)="sendMessageToServer(chatMessage.value);chatMessage.value = ''">Senden</button>
+          </div>
         </div>
       </div>
-    </div>
-    <ng-template #chatElseBlock>
-      <div>
+      <ng-template #chatElseBlock>
+        <div>
 
+        </div>
+      </ng-template>
+
+      <div class="text-center mt-3">
+        {{HTMLdebugDisplayMessage}}
       </div>
-    </ng-template>
-
-    <div class="text-center mt-3">
-      {{HTMLdebugDisplayMessage}}
     </div>
-  </div>

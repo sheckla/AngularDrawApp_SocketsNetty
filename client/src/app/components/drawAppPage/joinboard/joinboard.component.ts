@@ -16,6 +16,9 @@ export class JoinboardComponent implements OnInit {
   userIsConnected = false;
   showReturnToRegisterUI = false;
 
+  enterRoomLoading = false;
+  createRoomLoading = false;
+
   HTMLRoomText : String = '';
   HTMLOtherUsersText: string = '';
   HTMLdebugDisplayMessage = "";
@@ -71,6 +74,7 @@ export class JoinboardComponent implements OnInit {
       this.HTMLdebugDisplayMessage = "Kein Raum-Name eingegeben";
       return;
     }
+    this.enterRoomLoading = true;
     this.initSocketConnection();
     socketio.emit_enterRoom(this.roomName); // request Room-ID from Server
     socketio.emit_requestRoomClientsNames();
@@ -94,6 +98,7 @@ export class JoinboardComponent implements OnInit {
       this.HTMLdebugDisplayMessage = "Kein Raum-Name eingegeben";
       return;
     }
+    this.createRoomLoading = true;
     this.initSocketConnection();
     socketio.emit_createRoom(this.roomName);
     this.sendMessageToServer("hat einen Raum erstellt :^)");
@@ -115,6 +120,8 @@ export class JoinboardComponent implements OnInit {
 
     // Set Room-ID Text in HTML
     socketio.getSocket().on("enterRoomSuccessfull", (data) => {
+      this.enterRoomLoading = false;
+      this.createRoomLoading = false;
       this.HTMLRoomText = "Raum \"" + data + "\"";
       this.userIsConnected = true;
       this.showReturnToRegisterUI = false;
@@ -125,6 +132,8 @@ export class JoinboardComponent implements OnInit {
     })
 
     socketio.getSocket().on("enterRoomFailure", () => {
+      this.enterRoomLoading = false;
+      this.createRoomLoading = false;
       this.disconnectFromRoom();
       this.HTMLdebugDisplayMessage = "Der Raum ist nicht vorhanden.";
     })

@@ -1,16 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 
+* {
+  font-family: 'Fredoka', sans-serif !important;
+}
+
 html, body { height: 100%;
   background-color: background-color !important;
 }
 
 body { margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
+}
 
 .form-control {
   background-color: rgb(255, 255, 255) !important;
 }
 
 .button-secondary {
-  color: white;
+  color: rgb(210, 32, 255) !important;
 }
+
+.btn-lg-height {
+  height: 3em !important;
+  font-size: large!important;
+}
+
+.btn-gradient {
+  background: linear-gradient(45deg, rgb(179, 30, 176) , rgb(74, 15, 163));
+  transition: 0.1s !important;
+}
+
+.btn-gradient:hover {
+  filter: brightness(120%);
+}
+
